@@ -418,19 +418,19 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
 
 - (void)setNextWindowPos: (CGPoint)pos : (int) cond
 {
-    ImGui::SetNextWindowSize(ImVec2(pos.x,pos.y), cond);
+    ImGui::SetNextWindowPos(ImVec2(pos.x,pos.y), cond);
 }
 
 - (void)setWindowSize:(CGSize)size :(int)cond
 {
     ImVec2 _size = [self fromCGSize:size];
-    ImGui::SetWindowSize(_size);
+    ImGui::SetWindowSize(_size, cond);
 }
 
 - (void)setWindowPos:(CGPoint)pos :(int)cond
 {
     ImVec2 _pos = [self fromCGPoint:pos];
-    ImGui::SetWindowPos(_pos);
+    ImGui::SetWindowPos(_pos, cond);
 }
 
 - (void)setWindowFontScale: (float)scale
