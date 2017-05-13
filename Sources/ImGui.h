@@ -6,14 +6,25 @@
 //  Copyright © 2017 Hiroaki Yamane. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
+#endif
 
 //! Project version number for Swift-imgui.
-FOUNDATION_EXPORT double Swift_imguiVersionNumber;
+FOUNDATION_EXPORT double ImGuiVersionNumber;
 
 //! Project version string for Swift-imgui.
-FOUNDATION_EXPORT const unsigned char Swift_imguiVersionString[];
+FOUNDATION_EXPORT const unsigned char ImGuiVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Swift_imgui/PublicHeader.h>
 
 
+#import "ImGuiWrapperBase.h"
+#import "ImGuiWrapperMetal.h"
+#import "ImGuiWrapperOpenGLES2.h"
+//#import "ImGuiUtils.h"
+#import "ImGuiStyleBridge.h"
+#import "ImGuiKeyMapping.h"
+#import "ImGuiIOBridge.h"
