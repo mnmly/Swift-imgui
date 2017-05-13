@@ -18,6 +18,12 @@ public class ImGui {
         switch api {
         case .metal:
             vc = ImGuiMTKViewController(fontName: font)
+            if let vc = vc as? ImGuiMTKViewController {
+                if !vc.isAvailable {
+                    print("Metal API is not available, falling back to OpenGL API.")
+                    initialize(.opengl, font: font)
+                }
+            }
         break
         case .opengl:
             #if os(iOS)

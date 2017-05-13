@@ -6,7 +6,9 @@
 //  Copyright © 2017 Hiroaki Yamane. All rights reserved.
 //
 
-//#if TARGET_OS_IPHONE
+#include "TargetConditionals.h"
+
+#if !(TARGET_OS_SIMULATOR)
 
 #import "ImGuiWrapperMetal.h"
 #import <QuartzCore/CAMetalLayer.h>
@@ -378,4 +380,4 @@ void ImGui_ImplMtl_SetDrawable(id<CAMetalDrawable> drawable)
 void ImGui_ImplMtl_SetPixelFormat(MTLPixelFormat format) {
 	g_MTLPixelFormat = format;
 }
-//#endif
+#endif

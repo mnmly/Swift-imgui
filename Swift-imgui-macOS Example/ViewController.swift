@@ -13,6 +13,7 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ImGui.initialize(.metal)
         if let vc = ImGui.vc {
             addChildViewController(vc)

@@ -8,6 +8,7 @@
 
 #import "ImGuiWrapperBase.h"
 
+#if !(TARGET_IPHONE_SIMULATOR)
 #include <MetalKit/MetalKit.h>
 
 @interface ImGuiWrapperMetal : ImGuiWrapperBase
@@ -20,3 +21,5 @@
 - (void) image: (id<MTLTexture> _Nonnull) userTextureID : (CGSize)size : (CGPoint) uv0 : (CGPoint) uv1 : (CGColorRef _Nonnull) tintColor : (CGColorRef _Nonnull) borderColor;
 
 @end
+
+#endif

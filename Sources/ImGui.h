@@ -6,11 +6,7 @@
 //  Copyright © 2017 Hiroaki Yamane. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
-#else
-#import <Cocoa/Cocoa.h>
-#endif
+#import <Foundation/Foundation.h>
 
 //! Project version number for Swift-imgui.
 FOUNDATION_EXPORT double ImGuiVersionNumber;

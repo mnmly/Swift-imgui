@@ -1,5 +1,25 @@
 #if (arch(i386) || arch(x86_64)) && os(iOS)
-    
+
+public class ImGuiMTKViewController: ViewControllerAlias {
+    var fontName: String?
+    public let isAvailable = false
+    public convenience init(fontName: String? = nil) {
+        self.init(nibName: nil, bundle: nil)
+        self.fontName = fontName
+    }
+    #if os(OSX)
+    public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)!
+    }
+    #else
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    #endif
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 #else
     
 import MetalKit
@@ -14,6 +34,8 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
             (view as? MTKView)?.clearColor = MTLClearColor(red: Double(glRed), green: Double(glGreen), blue: Double(glBlue), alpha: Double(glAlpha))
         }
     }
+    
+    public let isAvailable = true
     
     var fontName: String?
     
