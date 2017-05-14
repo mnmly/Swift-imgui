@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     var myView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     var viewOffset: CGPoint = CGPoint.zero
+    var points: [CGPoint] = []
     
     override func viewDidLoad() {
         
@@ -31,6 +32,11 @@ class ViewController: UIViewController {
             view.addSubview(vc.view)
             vc.view.frame = CGRect(x: 0, y: view.frame.height * 0.7, width: view.frame.width, height: view.frame.height * 0.3)
         }
+        
+        for i in 0 ..< 180 {
+            points.append(CGPoint(x: Double(i), y: sin(Double(i) / 180.0)))
+        }
+        
         
         ImGui.draw { (imgui) in
             
@@ -53,10 +59,22 @@ class ViewController: UIViewController {
                 }).startAnimation()
             }
             
+            self.points = []
+            let time = Double(imgui.getTime())
+            for i in 0 ..< 180 {
+                self.points.append(CGPoint(x: Double(i), y: sin(Double(i) + time * 10.0)))
+            }
+            
             imgui.sliderFloat2("offset", v: &self.viewOffset, minV: -100.0, maxV: 100.0)
             imgui.sliderFloat2("size", v: &self.myView.bounds.size, minV: 5.0, maxV: 100.0)
             imgui.sliderFloat("cornerRadius", v: &self.myView.layer.cornerRadius, minV: 0.0, maxV: 10.0)
+            
+            
             imgui.colorEdit("backgroundColor", color: &(self.myView.backgroundColor)!)
+            let posY = (self.points.map({ (p) -> CGFloat in
+                return p.y
+            }))
+            imgui.plotLines("Sine", values: posY, valuesOffset: 0, overlayText: "", scaleMin: -1.0, scaleMax: 1.0)
             imgui.end()
             
         }
