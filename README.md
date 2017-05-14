@@ -4,7 +4,7 @@
 
 ### [Immediate mode GUI Library](https://github.com/ocornut/imgui/) from [Omar Cornut](https://github.com/ocornut) wrapped for use with Swift, inspired from [Cinder-ImGui](https://github.com/simongeilfus/Cinder-ImGui)
 
-![](https://d3vv6lp55qjaqc.cloudfront.net/items/2x370h310v1A0B2p3V0d/hello-imgui-swift.gif)
+![](http://c.mnmly.com/kRxd/hello-imgui-swift.gif)
 
 <sub>(ImGui is free but Omar needs your support to sustain development and maintenance. If you work for a company, please consider financial support)</sub>
 

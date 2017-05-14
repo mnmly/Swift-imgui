@@ -20,12 +20,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         myView.backgroundColor = UIColor(hue:0.592, saturation:0.904, brightness:0.980, alpha:1.000)
-        
+        myView.layer.allowsEdgeAntialiasing = true
         myView.center = view.center
-        
         view.addSubview(myView)
         
-        ImGui.initialize(.metal)
+        for i in 0 ..< 180 {
+            points.append(CGPoint(x: Double(i), y: sin(Double(i) / 180.0)))
+        }
+        
+        
+        ImGui.initialize(.metal, font: "SFMono-Regular")
         
         if let vc = ImGui.vc {
             addChildViewController(vc)
@@ -33,34 +37,31 @@ class ViewController: UIViewController {
             vc.view.frame = CGRect(x: 0, y: view.frame.height * 0.7, width: view.frame.width, height: view.frame.height * 0.3)
         }
         
-        for i in 0 ..< 180 {
-            points.append(CGPoint(x: Double(i), y: sin(Double(i) / 180.0)))
-        }
-        
         
         ImGui.draw { (imgui) in
             
             imgui.setNextWindowPos(CGPoint.zero, cond: .always)
             imgui.setNextWindowSize(self.view.frame.size)
+            imgui.pushStyleVar(.windowRounding, value: 0.0)
+            
             imgui.begin("Hello ImGui on Swift")
-            imgui.setWindowFontScale(UIScreen.main.scale)
             
             var center = self.view.center
-            
             center.x += self.viewOffset.x
             center.y += self.viewOffset.y
             
             self.myView.center = center
             
             if imgui.button("rotate me") {
-                self.myView.transform = CGAffineTransform.identity
                 UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.9, animations: {
-                    self.myView.transform = CGAffineTransform.init(rotationAngle: 180.0)
+                    self.myView.transform = self.myView.transform.rotated(by: 540.0 * .pi / 180.0)
                 }).startAnimation()
             }
             
-            self.points = []
+            self.points.removeAll()
+            
             let time = Double(imgui.getTime())
+            
             for i in 0 ..< 180 {
                 self.points.append(CGPoint(x: Double(i), y: sin(Double(i) + time * 10.0)))
             }
@@ -69,14 +70,16 @@ class ViewController: UIViewController {
             imgui.sliderFloat2("size", v: &self.myView.bounds.size, minV: 5.0, maxV: 100.0)
             imgui.sliderFloat("cornerRadius", v: &self.myView.layer.cornerRadius, minV: 0.0, maxV: 10.0)
             
-            
             imgui.colorEdit("backgroundColor", color: &(self.myView.backgroundColor)!)
+            
             let posY = (self.points.map({ (p) -> CGFloat in
                 return p.y
             }))
-            imgui.plotLines("Sine", values: posY, valuesOffset: 0, overlayText: "", scaleMin: -1.0, scaleMax: 1.0)
-            imgui.end()
             
+            imgui.plotLines("Sine", values: posY, valuesOffset: 0, overlayText: "", scaleMin: -1.0, scaleMax: 1.0)
+            
+            imgui.end()
+            imgui.popStyleVar()
         }
        
     }

@@ -51,6 +51,7 @@
 		998E211C1EC78A8C0032272F /* stb_textedit.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECDB41EC6BC71009C3E39 /* stb_textedit.h */; };
 		998E211D1EC78A8C0032272F /* stb_truetype.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECDB51EC6BC71009C3E39 /* stb_truetype.h */; };
 		998E211E1EC78A8C0032272F /* uSynergy.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECC661EC6B41C009C3E39 /* uSynergy.h */; };
+		998E21471EC7EE400032272F /* SFMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 998E21461EC7EE400032272F /* SFMono-Regular.ttf */; };
 		999ECC321EC6B0F6009C3E39 /* ImGui.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECC301EC6B0F6009C3E39 /* ImGui.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999ECC531EC6B337009C3E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC521EC6B337009C3E39 /* AppDelegate.swift */; };
 		999ECC551EC6B337009C3E39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC541EC6B337009C3E39 /* ViewController.swift */; };
@@ -145,6 +146,7 @@
 		997E13E41EC788FF00BB38AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		997E13ED1EC7893400BB38AF /* ImGui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImGui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		997E13F01EC7893400BB38AF /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		998E21461EC7EE400032272F /* SFMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Regular.ttf"; sourceTree = "<group>"; };
 		999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImGui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		999ECC301EC6B0F6009C3E39 /* ImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImGui.h; sourceTree = "<group>"; };
 		999ECC311EC6B0F6009C3E39 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		999ECC511EC6B337009C3E39 /* Swift-ImGui-iOS Example */ = {
 			isa = PBXGroup;
 			children = (
+				998E21461EC7EE400032272F /* SFMono-Regular.ttf */,
 				999ECC521EC6B337009C3E39 /* AppDelegate.swift */,
 				999ECC541EC6B337009C3E39 /* ViewController.swift */,
 				999ECC561EC6B337009C3E39 /* Main.storyboard */,
@@ -586,6 +589,7 @@
 				999ECC5D1EC6B337009C3E39 /* LaunchScreen.storyboard in Resources */,
 				999ECC5A1EC6B337009C3E39 /* Assets.xcassets in Resources */,
 				999ECC581EC6B337009C3E39 /* Main.storyboard in Resources */,
+				998E21471EC7EE400032272F /* SFMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
