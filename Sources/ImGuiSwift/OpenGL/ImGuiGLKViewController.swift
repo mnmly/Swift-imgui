@@ -20,7 +20,7 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
     
     public var drawBlocks: [ImGuiDrawCallback] = []
     
-    public var backgroundColor = UIColor.white {
+    public var backgroundColor = UIColor.clear {
         willSet (newValue){
             newValue.getRed(&glRed, green: &glGreen, blue: &glBlue, alpha: &glAlpha)
         }
@@ -53,6 +53,7 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
     public override func viewDidLoad() {
         
         super.viewDidLoad()
+        view.layer.isOpaque = false
         
         context = EAGLContext(api: .openGLES2)
         

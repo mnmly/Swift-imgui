@@ -71,7 +71,7 @@ class InputTextButton {
 	
 	func draw(imgui: ImGuiBase) {
 		
-		imgui.ioAddInputCharacter(char: textFieldDelegate.lastChar)
+		imgui.ioAddInputCharacter(textFieldDelegate.lastChar)
 		
 		if textFieldDelegate.isBackSpaced {
 			imgui.setKeyboardPress(key: .backspace)

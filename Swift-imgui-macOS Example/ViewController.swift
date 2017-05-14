@@ -23,11 +23,13 @@ class ViewController: NSViewController {
         }
         
         ImGui.draw { (imgui) in
-            imgui.begin(name: "Hello ImGui")
-            if imgui.button(label: "Click me") {
+            imgui.pushStyleVar(ImGuiStyleVar.windowRounding, value: 0.0)
+            imgui.begin("Hello ImGui")
+            if imgui.button("Click me") {
                 Swift.print("you clicked me.")
             }
             imgui.end()
+            imgui.popStyleVar()
         }
     }
 

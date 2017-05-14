@@ -35,6 +35,12 @@ public class ImGui {
         }
     }
     
+    public class func reset() {
+        if var vc = vc as? ImGuiViewControllerProtocol {
+            vc.drawBlocks.removeAll()
+        }
+    }
+    
     public class func draw(_ block: @escaping ImGuiDrawCallback) {
         if var vc = vc as? ImGuiViewControllerProtocol {
             vc.drawBlocks.append(block)

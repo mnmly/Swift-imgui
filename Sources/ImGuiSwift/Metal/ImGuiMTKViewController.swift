@@ -28,7 +28,7 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
     
     public var imgui: ImGuiMetal!
     public var drawBlocks: [ImGuiDrawCallback] = []
-    public var backgroundColor = ColorAlias.white {
+    public var backgroundColor = ColorAlias.clear {
         willSet (newValue){
             newValue.getRed(&glRed, green: &glGreen, blue: &glBlue, alpha: &glAlpha)
             (view as? MTKView)?.clearColor = MTLClearColor(red: Double(glRed), green: Double(glGreen), blue: Double(glBlue), alpha: Double(glAlpha))
@@ -69,6 +69,12 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
     override public func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        #if os(OSX)
+        view.layer?.isOpaque = false
+        #else
+        view.layer.isOpaque = false
+        #endif
         
 		device = MTLCreateSystemDefaultDevice()
 		commandQueue = device!.makeCommandQueue()

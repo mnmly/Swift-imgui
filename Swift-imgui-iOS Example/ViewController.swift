@@ -11,10 +11,13 @@ import ImGui
 
 class ViewController: UIViewController {
     
+    var myView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        view.backgroundColor = .red
+        
+        view.addSubview(myView)
         
         ImGui.initialize(.metal)
         
@@ -26,14 +29,16 @@ class ViewController: UIViewController {
         
         ImGui.draw { (imgui) in
             
-            imgui.begin(name: "Hello Metal")
-            
-            if imgui.button(label: "what") {
+            imgui.setNextWindowPos(CGPoint.zero, cond: .always)
+            imgui.setNextWindowSize(self.view.frame.size)
+            imgui.begin("Hello Metal")
+            imgui.setWindowFontScale(UIScreen.main.scale)
+            if imgui.button("what") {
                 Swift.print("What")
             }
 //            imgui.colorEdit(label: "Background Color", color: &self.imguiVC.backgroundColor)
             var size = self.view.frame.size
-            imgui.sliderFloat2(label: "size", v: &size, minV: 0.0, maxV: 500.0)
+            imgui.sliderFloat2("size", v: &size, minV: 0.0, maxV: 500.0)
             self.view.frame.size = size
             imgui.end()
             
