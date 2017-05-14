@@ -68,7 +68,6 @@
 		999ECC891EC6B423009C3E39 /* ImGuiStyleBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECC701EC6B423009C3E39 /* ImGuiStyleBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999ECC8A1EC6B423009C3E39 /* ImGuiStyleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC711EC6B423009C3E39 /* ImGuiStyleBridge.m */; };
 		999ECC8B1EC6B423009C3E39 /* ImGuiUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC721EC6B423009C3E39 /* ImGuiUtils.cpp */; };
-		999ECC8C1EC6B423009C3E39 /* ImGuiUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECC731EC6B423009C3E39 /* ImGuiUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999ECC8D1EC6B423009C3E39 /* ImGuiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC741EC6B423009C3E39 /* ImGuiViewController.swift */; };
 		999ECC8F1EC6B423009C3E39 /* ImGuiWrapperBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 999ECC761EC6B423009C3E39 /* ImGuiWrapperBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999ECC901EC6B423009C3E39 /* ImGuiWrapperBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC771EC6B423009C3E39 /* ImGuiWrapperBase.mm */; };
@@ -138,7 +137,7 @@
 		997E13C51EC6BFDA00BB38AF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		997E13CE1EC7831000BB38AF /* ImGui.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImGui.swift; sourceTree = "<group>"; };
 		997E13D21EC7865A00BB38AF /* ImGuiViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImGuiViewControllerProtocol.swift; sourceTree = "<group>"; };
-		997E13D91EC788FF00BB38AF /* Swift-imgui-macOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-imgui-macOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		997E13D91EC788FF00BB38AF /* Swift-ImGui-macOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-ImGui-macOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		997E13DB1EC788FF00BB38AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		997E13DD1EC788FF00BB38AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		997E13DF1EC788FF00BB38AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,7 +148,7 @@
 		999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImGui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		999ECC301EC6B0F6009C3E39 /* ImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImGui.h; sourceTree = "<group>"; };
 		999ECC311EC6B0F6009C3E39 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
-		999ECC501EC6B337009C3E39 /* Swift-imgui-iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-imgui-iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		999ECC501EC6B337009C3E39 /* Swift-ImGui-iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-ImGui-iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		999ECC521EC6B337009C3E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		999ECC541EC6B337009C3E39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		999ECC571EC6B337009C3E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,7 +180,7 @@
 		999ECC801EC6B423009C3E39 /* ImGuiOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImGuiOpenGL.swift; sourceTree = "<group>"; };
 		999ECC811EC6B423009C3E39 /* ImGuiWrapperOpenGLES2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImGuiWrapperOpenGLES2.h; sourceTree = "<group>"; };
 		999ECC821EC6B423009C3E39 /* ImGuiWrapperOpenGLES2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImGuiWrapperOpenGLES2.mm; sourceTree = "<group>"; };
-		999ECC9A1EC6B53B009C3E39 /* Swift-imgui-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-imgui-PrefixHeader.pch"; sourceTree = "<group>"; };
+		999ECC9A1EC6B53B009C3E39 /* Swift-ImGui-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-ImGui-PrefixHeader.pch"; sourceTree = "<group>"; };
 		999ECDAD1EC6BC71009C3E39 /* imconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = imgui/imconfig.h; sourceTree = "<group>"; };
 		999ECDAE1EC6BC71009C3E39 /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = imgui/imgui_demo.cpp; sourceTree = "<group>"; };
 		999ECDAF1EC6BC71009C3E39 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = imgui/imgui_draw.cpp; sourceTree = "<group>"; };
@@ -244,7 +243,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		997E13DA1EC788FF00BB38AF /* Swift-imgui-macOS Example */ = {
+		997E13DA1EC788FF00BB38AF /* Swift-ImGui-macOS Example */ = {
 			isa = PBXGroup;
 			children = (
 				997E13DB1EC788FF00BB38AF /* AppDelegate.swift */,
@@ -253,6 +252,7 @@
 				997E13E11EC788FF00BB38AF /* Main.storyboard */,
 				997E13E41EC788FF00BB38AF /* Info.plist */,
 			);
+			name = "Swift-ImGui-macOS Example";
 			path = "Swift-imgui-macOS Example";
 			sourceTree = "<group>";
 		};
@@ -260,8 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				999ECC381EC6B102009C3E39 /* Sources */,
-				999ECC511EC6B337009C3E39 /* Swift-imgui-iOS Example */,
-				997E13DA1EC788FF00BB38AF /* Swift-imgui-macOS Example */,
+				999ECC511EC6B337009C3E39 /* Swift-ImGui-iOS Example */,
+				997E13DA1EC788FF00BB38AF /* Swift-ImGui-macOS Example */,
 				999ECC2E1EC6B0F6009C3E39 /* Products */,
 				997E13C41EC6BFD900BB38AF /* Frameworks */,
 			);
@@ -271,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */,
-				999ECC501EC6B337009C3E39 /* Swift-imgui-iOS Example.app */,
-				997E13D91EC788FF00BB38AF /* Swift-imgui-macOS Example.app */,
+				999ECC501EC6B337009C3E39 /* Swift-ImGui-iOS Example.app */,
+				997E13D91EC788FF00BB38AF /* Swift-ImGui-macOS Example.app */,
 				997E13ED1EC7893400BB38AF /* ImGui.framework */,
 			);
 			name = Products;
@@ -287,12 +287,12 @@
 				999ECC311EC6B0F6009C3E39 /* Info-iOS.plist */,
 				997E13F01EC7893400BB38AF /* Info-macOS.plist */,
 				999ECC301EC6B0F6009C3E39 /* ImGui.h */,
-				999ECC9A1EC6B53B009C3E39 /* Swift-imgui-PrefixHeader.pch */,
+				999ECC9A1EC6B53B009C3E39 /* Swift-ImGui-PrefixHeader.pch */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		999ECC511EC6B337009C3E39 /* Swift-imgui-iOS Example */ = {
+		999ECC511EC6B337009C3E39 /* Swift-ImGui-iOS Example */ = {
 			isa = PBXGroup;
 			children = (
 				999ECC521EC6B337009C3E39 /* AppDelegate.swift */,
@@ -302,6 +302,7 @@
 				999ECC5B1EC6B337009C3E39 /* LaunchScreen.storyboard */,
 				999ECC5E1EC6B337009C3E39 /* Info.plist */,
 			);
+			name = "Swift-ImGui-iOS Example";
 			path = "Swift-imgui-iOS Example";
 			sourceTree = "<group>";
 		};
@@ -414,7 +415,6 @@
 				999ECDBD1EC6BC71009C3E39 /* stb_textedit.h in Headers */,
 				999ECC941EC6B423009C3E39 /* ImGuiWrapperMetal.h in Headers */,
 				999ECDBC1EC6BC71009C3E39 /* stb_rect_pack.h in Headers */,
-				999ECC8C1EC6B423009C3E39 /* ImGuiUtils.h in Headers */,
 				999ECC891EC6B423009C3E39 /* ImGuiStyleBridge.h in Headers */,
 				999ECC861EC6B423009C3E39 /* ImGuiIOBridge.h in Headers */,
 				999ECC881EC6B423009C3E39 /* ImGuiKeyMapping.h in Headers */,
@@ -428,9 +428,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		997E13D81EC788FF00BB38AF /* Swift-imgui-macOS Example */ = {
+		997E13D81EC788FF00BB38AF /* Swift-ImGui-macOS Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 997E13E51EC788FF00BB38AF /* Build configuration list for PBXNativeTarget "Swift-imgui-macOS Example" */;
+			buildConfigurationList = 997E13E51EC788FF00BB38AF /* Build configuration list for PBXNativeTarget "Swift-ImGui-macOS Example" */;
 			buildPhases = (
 				997E13D51EC788FF00BB38AF /* Sources */,
 				997E13D61EC788FF00BB38AF /* Frameworks */,
@@ -442,14 +442,14 @@
 			dependencies = (
 				997E13F31EC7893400BB38AF /* PBXTargetDependency */,
 			);
-			name = "Swift-imgui-macOS Example";
+			name = "Swift-ImGui-macOS Example";
 			productName = "Swift-imgui-macOS Example";
-			productReference = 997E13D91EC788FF00BB38AF /* Swift-imgui-macOS Example.app */;
+			productReference = 997E13D91EC788FF00BB38AF /* Swift-ImGui-macOS Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		997E13EC1EC7893400BB38AF /* Swift-imgui-macOS */ = {
+		997E13EC1EC7893400BB38AF /* Swift-ImGui-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 997E13F61EC7893400BB38AF /* Build configuration list for PBXNativeTarget "Swift-imgui-macOS" */;
+			buildConfigurationList = 997E13F61EC7893400BB38AF /* Build configuration list for PBXNativeTarget "Swift-ImGui-macOS" */;
 			buildPhases = (
 				997E13E81EC7893400BB38AF /* Sources */,
 				997E13E91EC7893400BB38AF /* Frameworks */,
@@ -460,14 +460,14 @@
 			);
 			dependencies = (
 			);
-			name = "Swift-imgui-macOS";
+			name = "Swift-ImGui-macOS";
 			productName = "Swift-imgui-macOS";
 			productReference = 997E13ED1EC7893400BB38AF /* ImGui.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		999ECC2C1EC6B0F6009C3E39 /* Swift-imgui-iOS */ = {
+		999ECC2C1EC6B0F6009C3E39 /* Swift-ImGui-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 999ECC351EC6B0F6009C3E39 /* Build configuration list for PBXNativeTarget "Swift-imgui-iOS" */;
+			buildConfigurationList = 999ECC351EC6B0F6009C3E39 /* Build configuration list for PBXNativeTarget "Swift-ImGui-iOS" */;
 			buildPhases = (
 				999ECC281EC6B0F6009C3E39 /* Sources */,
 				999ECC291EC6B0F6009C3E39 /* Frameworks */,
@@ -478,14 +478,14 @@
 			);
 			dependencies = (
 			);
-			name = "Swift-imgui-iOS";
+			name = "Swift-ImGui-iOS";
 			productName = "Swift-imgui";
 			productReference = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		999ECC4F1EC6B337009C3E39 /* Swift-imgui-iOS Example */ = {
+		999ECC4F1EC6B337009C3E39 /* Swift-ImGui-iOS Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 999ECC5F1EC6B337009C3E39 /* Build configuration list for PBXNativeTarget "Swift-imgui-iOS Example" */;
+			buildConfigurationList = 999ECC5F1EC6B337009C3E39 /* Build configuration list for PBXNativeTarget "Swift-ImGui-iOS Example" */;
 			buildPhases = (
 				999ECC4C1EC6B337009C3E39 /* Sources */,
 				999ECC4D1EC6B337009C3E39 /* Frameworks */,
@@ -497,9 +497,9 @@
 			dependencies = (
 				999ECC631EC6B33E009C3E39 /* PBXTargetDependency */,
 			);
-			name = "Swift-imgui-iOS Example";
+			name = "Swift-ImGui-iOS Example";
 			productName = "Swift-imgui-iOS Example";
-			productReference = 999ECC501EC6B337009C3E39 /* Swift-imgui-iOS Example.app */;
+			productReference = 999ECC501EC6B337009C3E39 /* Swift-ImGui-iOS Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -534,7 +534,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 999ECC271EC6B0F6009C3E39 /* Build configuration list for PBXProject "Swift-imgui" */;
+			buildConfigurationList = 999ECC271EC6B0F6009C3E39 /* Build configuration list for PBXProject "Swift-ImGui" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -547,10 +547,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				999ECC2C1EC6B0F6009C3E39 /* Swift-imgui-iOS */,
-				999ECC4F1EC6B337009C3E39 /* Swift-imgui-iOS Example */,
-				997E13D81EC788FF00BB38AF /* Swift-imgui-macOS Example */,
-				997E13EC1EC7893400BB38AF /* Swift-imgui-macOS */,
+				999ECC2C1EC6B0F6009C3E39 /* Swift-ImGui-iOS */,
+				999ECC4F1EC6B337009C3E39 /* Swift-ImGui-iOS Example */,
+				997E13D81EC788FF00BB38AF /* Swift-ImGui-macOS Example */,
+				997E13EC1EC7893400BB38AF /* Swift-ImGui-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -668,12 +668,12 @@
 /* Begin PBXTargetDependency section */
 		997E13F31EC7893400BB38AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 997E13EC1EC7893400BB38AF /* Swift-imgui-macOS */;
+			target = 997E13EC1EC7893400BB38AF /* Swift-ImGui-macOS */;
 			targetProxy = 997E13F21EC7893400BB38AF /* PBXContainerItemProxy */;
 		};
 		999ECC631EC6B33E009C3E39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 999ECC2C1EC6B0F6009C3E39 /* Swift-imgui-iOS */;
+			target = 999ECC2C1EC6B0F6009C3E39 /* Swift-ImGui-iOS */;
 			targetProxy = 999ECC621EC6B33E009C3E39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -714,10 +714,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
-				INFOPLIST_FILE = "Swift-imgui-macOS Example/Info.plist";
+				INFOPLIST_FILE = "Swift-ImGui-macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-macOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-macOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;
@@ -732,10 +732,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
-				INFOPLIST_FILE = "Swift-imgui-macOS Example/Info.plist";
+				INFOPLIST_FILE = "Swift-ImGui-macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-macOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-macOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;
@@ -754,13 +754,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Sources/Swift-imgui-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Sources/Swift-ImGui-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = Sources;
 				INFOPLIST_FILE = "Sources/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-macOS";
 				PRODUCT_NAME = ImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -780,13 +780,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Sources/Swift-imgui-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Sources/Swift-ImGui-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = Sources;
 				INFOPLIST_FILE = "Sources/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-macOS";
 				PRODUCT_NAME = ImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -905,7 +905,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Sources/Swift-imgui-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Sources/Swift-ImGui-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = Sources;
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -915,7 +915,7 @@
 					"$(PROJECT_DIR)/Sources/imgui/examples/libs/glfw/lib-vc2010-32",
 					"$(PROJECT_DIR)/Sources/imgui/examples/libs/glfw/lib-vc2010-64",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui";
 				PRODUCT_NAME = ImGui;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -933,7 +933,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Sources/Swift-imgui-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Sources/Swift-ImGui-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = Sources;
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -943,7 +943,7 @@
 					"$(PROJECT_DIR)/Sources/imgui/examples/libs/glfw/lib-vc2010-32",
 					"$(PROJECT_DIR)/Sources/imgui/examples/libs/glfw/lib-vc2010-64",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui";
 				PRODUCT_NAME = ImGui;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -957,9 +957,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
-				INFOPLIST_FILE = "Swift-imgui-iOS Example/Info.plist";
+				INFOPLIST_FILE = "Swift-ImGui-iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-iOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -971,9 +971,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
-				INFOPLIST_FILE = "Swift-imgui-iOS Example/Info.plist";
+				INFOPLIST_FILE = "Swift-ImGui-iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-imgui-iOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -982,7 +982,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		997E13E51EC788FF00BB38AF /* Build configuration list for PBXNativeTarget "Swift-imgui-macOS Example" */ = {
+		997E13E51EC788FF00BB38AF /* Build configuration list for PBXNativeTarget "Swift-ImGui-macOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				997E13E61EC788FF00BB38AF /* Debug */,
@@ -991,7 +991,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		997E13F61EC7893400BB38AF /* Build configuration list for PBXNativeTarget "Swift-imgui-macOS" */ = {
+		997E13F61EC7893400BB38AF /* Build configuration list for PBXNativeTarget "Swift-ImGui-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				997E13F71EC7893400BB38AF /* Debug */,
@@ -1000,7 +1000,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		999ECC271EC6B0F6009C3E39 /* Build configuration list for PBXProject "Swift-imgui" */ = {
+		999ECC271EC6B0F6009C3E39 /* Build configuration list for PBXProject "Swift-ImGui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				999ECC331EC6B0F6009C3E39 /* Debug */,
@@ -1009,7 +1009,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		999ECC351EC6B0F6009C3E39 /* Build configuration list for PBXNativeTarget "Swift-imgui-iOS" */ = {
+		999ECC351EC6B0F6009C3E39 /* Build configuration list for PBXNativeTarget "Swift-ImGui-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				999ECC361EC6B0F6009C3E39 /* Debug */,
@@ -1018,7 +1018,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		999ECC5F1EC6B337009C3E39 /* Build configuration list for PBXNativeTarget "Swift-imgui-iOS Example" */ = {
+		999ECC5F1EC6B337009C3E39 /* Build configuration list for PBXNativeTarget "Swift-ImGui-iOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				999ECC601EC6B337009C3E39 /* Debug */,

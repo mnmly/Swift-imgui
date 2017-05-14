@@ -685,7 +685,7 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-    func inputFloat<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, itemCount: Int = 1, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool{
+    public func inputFloat<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, itemCount: Int = 1, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool{
 		if itemCount > 4 { return false }
         
 		var _v: [Float] = []
@@ -701,23 +701,23 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-    func inputFloat2<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+    public func inputFloat2<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputFloat(label, v: v, itemCount: 2, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
 	@discardableResult
-    func inputFloat3<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+    public func inputFloat3<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputFloat(label, v: v, itemCount: 3, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
 	@discardableResult
-    func inputFloat4<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+    public func inputFloat4<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, step: Float = 0.0, stepFast: Float = 0.0, decimalPrecision: Int32 = -1, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputFloat(label, v: v, itemCount: 4, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
 	// MARK: Sliders
 	@discardableResult
-    func sliderFloat<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, minV: Float, maxV: Float, displayFormat: String = "%.3f", power: Float = 1.0, itemCount: Int = 1) -> Bool{
+    public func sliderFloat<T: Numeric>(_ label: String, v: UnsafeMutablePointer<T>, minV: Float, maxV: Float, displayFormat: String = "%.3f", power: Float = 1.0, itemCount: Int = 1) -> Bool{
 		
 		var _v: [Float] = []
 		

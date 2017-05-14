@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "999ECC2C1EC6B0F6009C3E39"
                BuildableName = "ImGui.framework"
-               BlueprintName = "Swift-imgui-iOS"
-               ReferencedContainer = "container:Swift-imgui.xcodeproj">
+               BlueprintName = "Swift-ImGui-iOS"
+               ReferencedContainer = "container:Swift-ImGui.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,8 +47,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "999ECC2C1EC6B0F6009C3E39"
             BuildableName = "ImGui.framework"
-            BlueprintName = "Swift-imgui-iOS"
-            ReferencedContainer = "container:Swift-imgui.xcodeproj">
+            BlueprintName = "Swift-ImGui-iOS"
+            ReferencedContainer = "container:Swift-ImGui.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,8 +65,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "999ECC2C1EC6B0F6009C3E39"
             BuildableName = "ImGui.framework"
-            BlueprintName = "Swift-imgui-iOS"
-            ReferencedContainer = "container:Swift-imgui.xcodeproj">
+            BlueprintName = "Swift-ImGui-iOS"
+            ReferencedContainer = "container:Swift-ImGui.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
