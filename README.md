@@ -2,7 +2,7 @@
 
 *Personal WIP*
 
-###[Immediate mode GUI Library](https://github.com/ocornut/imgui/) from [Omar Cornut](https://github.com/ocornut) wrapped for use with Swift, inspired from [Cinder-ImGui](https://github.com/simongeilfus/Cinder-ImGui)
+### [Immediate mode GUI Library](https://github.com/ocornut/imgui/) from [Omar Cornut](https://github.com/ocornut) wrapped for use with Swift, inspired from [Cinder-ImGui](https://github.com/simongeilfus/Cinder-ImGui)
 
 ![](https://d3vv6lp55qjaqc.cloudfront.net/items/2x370h310v1A0B2p3V0d/hello-imgui-swift.gif)
 
@@ -17,9 +17,8 @@ ImGui is designed to enable fast iteration and empower programmers to create con
 
 ImGui is particularly suited to integration in realtime 3D applications, fullscreen applications, embedded applications, games, or any applications on consoles platforms where operating system features are non-standard.
 
-#### Installation
+#### Installation with Carthage
 
-**Carthage**
 Add following to `Cartfile`:
 
 ```
