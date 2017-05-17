@@ -1203,6 +1203,16 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
     ImGui::NextColumn();
 }
 
+- (void)treePush: (NSString *)_id
+{
+    ImGui::TreePush(_id.UTF8String);
+}
+
+//- (void)treePush: (NSString *)_id
+//{
+//    ImGui::TreePush(_id.UTF8String);
+//}
+
 - (BOOL)treeNode: (NSString *)label
 {
     return ImGui::TreeNode(label.UTF8String);
@@ -1226,6 +1236,11 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
 - (BOOL)isItemActive
 {
     return ImGui::IsItemActive();
+}
+
+- (BOOL)isItemClicked
+{
+    return ImGui::IsItemClicked();
 }
 
 - (void)ioAddInputCharacter:(NSString *)character

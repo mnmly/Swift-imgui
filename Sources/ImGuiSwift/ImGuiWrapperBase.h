@@ -266,6 +266,7 @@ typedef void* ImTextureID;
 
 - (BOOL) isItemHovered;
 - (BOOL) isItemHoveredRect;
+- (BOOL) isItemClicked;
 - (BOOL) isItemActive;
 - (BOOL) isItemVisible;
 - (BOOL) isAnyItemHovered;

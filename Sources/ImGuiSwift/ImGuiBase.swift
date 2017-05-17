@@ -449,20 +449,24 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func colorEdit(_ label: String, color: UnsafeMutablePointer<ColorAlias>) -> Bool{
-		var _color = color.pointee.cgColor.components!.map { (v) -> Float in return Float(v) }
-		var numberOfComponents = color.pointee.cgColor.numberOfComponents
-		if numberOfComponents < 4 {
-			let alpha = _color[1]
-			_color[0] = _color[0]
-			_color[1] = _color[0]
-			_color.append(_color[0])
-			_color.append(alpha)
-			numberOfComponents = 4
-		}
-		let res = imguiWrapper.colorEdit(label, &_color)
-		color.pointee = ColorAlias(red: CGFloat(_color[0]), green: CGFloat(_color[1]), blue: CGFloat(_color[2]), alpha: CGFloat(_color[3]))
-		return res
+	public func colorEdit(_ label: String, color: UnsafeMutablePointer<ColorAlias?>) -> Bool{
+        
+        if var _color = color.pointee?.cgColor.components!.map({ (v) -> Float in return Float(v) }),
+            var numberOfComponents = color.pointee?.cgColor.numberOfComponents {
+    		if numberOfComponents < 4 {
+    			let alpha = _color[1]
+    			_color[0] = _color[0]
+    			_color[1] = _color[0]
+    			_color.append(_color[0])
+    			_color.append(alpha)
+    			numberOfComponents = 4
+    		}
+    		let res = imguiWrapper.colorEdit(label, &_color)
+    		color.pointee = ColorAlias(red: CGFloat(_color[0]), green: CGFloat(_color[1]), blue: CGFloat(_color[2]), alpha: CGFloat(_color[3]))
+            return res
+        } else {
+            return false
+        }
 	}
 	
     public func plotLines<T: Numeric>(_ label: String, values: [T], valuesOffset: Int = 0, overlayText: String = "", scaleMin: Float = .leastNormalMagnitude, scaleMax: Float = .greatestFiniteMagnitude, graphSize: CGSize = CGSize.zero, stride: Int = MemoryLayout<Float>.size) {
@@ -870,7 +874,7 @@ public class ImGuiBase {
 		imguiWrapper.treePush(id)
 	}
 	
-	public func treePush(_ pointer: UnsafeRawPointer?){
+	public func treePush(pointer: UnsafeRawPointer?){
 		imguiWrapper.treePush(withPointer: pointer)
 	}
 	
@@ -1148,10 +1152,12 @@ public class ImGuiBase {
 		return imguiWrapper.isItemHovered()
 	}
 	
-	@discardableResult
 	public func isItemActive() -> Bool {
 		return imguiWrapper.isItemActive()
 	}
+    public func isItemClicked() -> Bool {
+        return imguiWrapper.isItemClicked()
+    }
 	
 	@discardableResult
 	public func isMouseDoubleClicked(_ button: Int32) -> Bool {
