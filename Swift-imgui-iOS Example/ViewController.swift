@@ -70,7 +70,14 @@ class ViewController: UIViewController {
             imgui.sliderFloat2("size", v: &self.myView.bounds.size, minV: 5.0, maxV: 100.0)
             imgui.sliderFloat("cornerRadius", v: &self.myView.layer.cornerRadius, minV: 0.0, maxV: 10.0)
             
-            imgui.colorEdit("backgroundColor", color: &(self.myView.backgroundColor)!)
+            
+            imgui.colorEdit("backgroundColor", color: &self.myView.backgroundColor)
+            
+            struct Temp {
+                static var c: UIColor = UIColor.white
+            }
+            
+            imgui.colorEdit("backgroundColor 2", color: &Temp.c)
             
             let posY = (self.points.map({ (p) -> CGFloat in
                 return p.y

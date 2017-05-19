@@ -84,7 +84,12 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
             mtkView.framebufferOnly = false
             mtkView.delegate = self
             mtkView.preferredFramesPerSecond = 60
-            if let fontPath = Bundle.main.path(forResource: fontName, ofType: "ttf") {
+            var type: String = "ttf"
+            if let fontName = fontName {
+                var components = fontName.components(separatedBy: ".")
+                if fontName.contains(".") { type = components.popLast()! }
+            }
+            if let fontPath = Bundle.main.path(forResource: fontName, ofType: type) {
                 imgui = ImGuiMetal(view: mtkView, fontPath: fontPath)
             } else {
                 imgui = ImGuiMetal(view: mtkView)

@@ -451,22 +451,28 @@ public class ImGuiBase {
 	@discardableResult
 	public func colorEdit(_ label: String, color: UnsafeMutablePointer<ColorAlias?>) -> Bool{
         
-        if var _color = color.pointee?.cgColor.components!.map({ (v) -> Float in return Float(v) }),
-            var numberOfComponents = color.pointee?.cgColor.numberOfComponents {
-    		if numberOfComponents < 4 {
-    			let alpha = _color[1]
-    			_color[0] = _color[0]
-    			_color[1] = _color[0]
-    			_color.append(_color[0])
-    			_color.append(alpha)
-    			numberOfComponents = 4
-    		}
-    		let res = imguiWrapper.colorEdit(label, &_color)
-    		color.pointee = ColorAlias(red: CGFloat(_color[0]), green: CGFloat(_color[1]), blue: CGFloat(_color[2]), alpha: CGFloat(_color[3]))
-            return res
+        if var _ = color.pointee?.cgColor.components!.map({ (v) -> Float in return Float(v) }) {
+            return colorEdit(label, color: &(color.pointee)!)
         } else {
             return false
         }
+	}
+	@discardableResult
+	public func colorEdit(_ label: String, color: UnsafeMutablePointer<ColorAlias>) -> Bool{
+        
+        var _color = color.pointee.cgColor.components!.map({ (v) -> Float in return Float(v) })
+        var numberOfComponents = color.pointee.cgColor.numberOfComponents
+		if numberOfComponents < 4 {
+			let alpha = _color[1]
+			_color[0] = _color[0]
+			_color[1] = _color[0]
+			_color.append(_color[0])
+			_color.append(alpha)
+			numberOfComponents = 4
+		}
+		let res = imguiWrapper.colorEdit(label, &_color)
+		color.pointee = ColorAlias(red: CGFloat(_color[0]), green: CGFloat(_color[1]), blue: CGFloat(_color[2]), alpha: CGFloat(_color[3]))
+        return res
 	}
 	
     public func plotLines<T: Numeric>(_ label: String, values: [T], valuesOffset: Int = 0, overlayText: String = "", scaleMin: Float = .leastNormalMagnitude, scaleMax: Float = .greatestFiniteMagnitude, graphSize: CGSize = CGSize.zero, stride: Int = MemoryLayout<Float>.size) {

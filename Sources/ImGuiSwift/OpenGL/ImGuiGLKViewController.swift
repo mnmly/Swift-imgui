@@ -61,7 +61,12 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
             glkView.context = _context
             glkView.drawableDepthFormat = .format24
             
-            if let fontPath = Bundle.main.path(forResource: fontName, ofType: "ttf") {
+            var type: String = "ttf"
+            if let fontName = fontName {
+                var components = fontName.components(separatedBy: ".")
+                if fontName.contains(".") { type = components.popLast()! }
+            }
+            if let fontPath = Bundle.main.path(forResource: fontName, ofType: type) {
                 imgui = ImGuiOpenGL(view: glkView, fontPath: fontPath)
             } else {
                 imgui = ImGuiOpenGL(view: glkView)
