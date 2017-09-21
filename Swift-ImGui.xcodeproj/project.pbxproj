@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9901A3EE1F739136002ADD8D /* ImGuiWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC751EC6B423009C3E39 /* ImGuiWindow.swift */; };
 		997E13C71EC6C00500BB38AF /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997E13C51EC6BFDA00BB38AF /* SpriteKit.framework */; };
 		997E13CB1EC7713A00BB38AF /* ImGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; };
 		997E13CC1EC7713A00BB38AF /* ImGui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -634,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9901A3EE1F739136002ADD8D /* ImGuiWindow.swift in Sources */,
 				997E13D41EC7867500BB38AF /* ImGuiViewControllerProtocol.swift in Sources */,
 				997E13D01EC7844200BB38AF /* ImGui.swift in Sources */,
 				999ECC971EC6B423009C3E39 /* ImGuiOpenGL.swift in Sources */,
@@ -904,6 +906,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
 				DYLIB_COMPATIBILITY_VERSION = 1;

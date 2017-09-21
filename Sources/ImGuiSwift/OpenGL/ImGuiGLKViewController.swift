@@ -31,11 +31,11 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
     private var glBlue: CGFloat = 1.0
     private var glAlpha: CGFloat = 1.0
     
-    var fontName: String?
+    var fontPath: String?
     
-    public convenience init(fontName: String? = nil) {
+    public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.fontName = fontName
+        self.fontPath = fontPath
     }
  
     public convenience init() {
@@ -61,12 +61,7 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
             glkView.context = _context
             glkView.drawableDepthFormat = .format24
             
-            var type: String = "ttf"
-            if let fontName = fontName {
-                var components = fontName.components(separatedBy: ".")
-                if fontName.contains(".") { type = components.popLast()! }
-            }
-            if let fontPath = Bundle.main.path(forResource: fontName, ofType: type) {
+            if let fontPath = fontPath {
                 imgui = ImGuiOpenGL(view: glkView, fontPath: fontPath)
             } else {
                 imgui = ImGuiOpenGL(view: glkView)

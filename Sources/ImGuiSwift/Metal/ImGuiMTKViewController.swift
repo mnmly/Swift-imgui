@@ -26,6 +26,7 @@ import MetalKit
 
 public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerProtocol {
     
+    public var singleWindowMode = true
     public var imgui: ImGuiMetal!
     public var drawBlocks: [ImGuiDrawCallback] = []
     public var backgroundColor = ColorAlias.clear {
@@ -37,7 +38,7 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
     
     public let isAvailable = true
     
-    var fontName: String?
+    var fontPath: String?
     
     private var glRed: CGFloat = 1.0
     private var glGreen: CGFloat = 1.0
@@ -47,9 +48,9 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
 	var device: MTLDevice!
 	var commandQueue: MTLCommandQueue!
     
-    public convenience init(fontName: String? = nil) {
+    public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.fontName = fontName
+        self.fontPath = fontPath
     }
     
     public required init(coder aDecoder: NSCoder) {
@@ -84,12 +85,7 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
             mtkView.framebufferOnly = false
             mtkView.delegate = self
             mtkView.preferredFramesPerSecond = 60
-            var type: String = "ttf"
-            if let fontName = fontName {
-                var components = fontName.components(separatedBy: ".")
-                if fontName.contains(".") { type = components.popLast()! }
-            }
-            if let fontPath = Bundle.main.path(forResource: fontName, ofType: type) {
+            if let fontPath = fontPath {
                 imgui = ImGuiMetal(view: mtkView, fontPath: fontPath)
             } else {
                 imgui = ImGuiMetal(view: mtkView)
@@ -127,8 +123,21 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
 			imgui.setViewport(size: view.bounds.size, scale: scale)
 			imgui.newFrame(drawable: drawable)
+
+            if singleWindowMode {
+                imgui.setNextWindowPos(CGPoint.zero, cond: .always)
+                imgui.setNextWindowSize(view.frame.size)
+                imgui.pushStyleVar(.windowRounding, value: 0.0)
+                imgui.begin("ImGui Swift")
+            }
+            
             for block in drawBlocks {
                 block(imgui)
+            }
+            
+            if singleWindowMode {
+                imgui.end()
+                imgui.popStyleVar()
             }
             
 			imgui.render()

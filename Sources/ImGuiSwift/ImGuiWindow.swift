@@ -14,6 +14,8 @@ import UIKit
 		case Shake
 		case Gesture(UIGestureRecognizer)
 	}
+    
+    public var frameOverride: CGRect?
 	
 	/// The amount of time you need to shake your device to bring up the ImGui UI
 	private static let shakeWindowTimeInterval: Double = 0.4
@@ -22,7 +24,7 @@ import UIKit
 	private let gestureType: GestureType
 	
 	/// By holding on to the ImGuiViewController, we get easy state restoration!
-	public var imguiViewController: ImGuiViewController! // requires self for init
+	public var imguiViewController: ViewControllerAlias! // requires self for init
 	
 	/// Whether or not the device is shaking. Used in determining when to present the ImGui UI when the device is shaken.
 	private var shaking: Bool = false
@@ -36,7 +38,7 @@ import UIKit
 	
 	// MARK: Init
 	
-	public init(frame: CGRect, gestureType: GestureType = .Shake) {
+    public init(frame: CGRect, api: ImGui.API = .metal, fontPath: String? = nil, gestureType: GestureType = .Shake) {
 		self.gestureType = gestureType
 		
 //		// Are we running on a Mac? If so, then we're in a simulator!
@@ -56,8 +58,12 @@ import UIKit
 		case .Shake:
 			break
 		}
-		
-		imguiViewController = ImGuiViewController(delegate: self)
+        
+        ImGui.initialize(api, fontPath: fontPath)
+        
+        if let vc = ImGui.vc {
+            imguiViewController = vc
+        }
 	}
 	
 	public required init?(coder aDecoder: NSCoder) {
@@ -104,11 +110,16 @@ import UIKit
 			visibleViewController = visibleViewController.presentedViewController!
 		}
 		
-		if !(visibleViewController is ImGuiViewController) {
+		if !(visibleViewController is ImGuiViewControllerProtocol) {
 			imguiViewController.providesPresentationContextTransitionStyle = true
 			imguiViewController.definesPresentationContext = true
 			imguiViewController.modalPresentationStyle = .overCurrentContext
 			imguiViewController.view.backgroundColor = .clear
+            imguiViewController.view.frame = visibleViewController.view.frame
+            imguiViewController.modalPresentationStyle = .custom
+            imguiViewController.transitioningDelegate = self
+            
+            
 			visibleViewController.present(imguiViewController, animated: true, completion: nil)
 			return true
 		} else {
@@ -119,14 +130,26 @@ import UIKit
 	func dismissImGui(completion: (() -> ())? = nil) {
 		imguiViewController.dismiss(animated: true, completion: completion)
 	}
-	
-	func addDrawBlock(drawBlock: @escaping (ImGuiBase) -> Void) {
-		imguiViewController.imguiView.drawBlocks.append(drawBlock)
-	}
 }
 
-extension ImGuiWindow: ImGuiViewControllerDelegate {
-	public func imguiViewControllerRequestsDismiss(imguiViewController: ImGuiViewController, completion: (() -> ())? = nil) {
-		dismissImGui(completion: completion)
-	}
+extension ImGuiWindow: UIViewControllerTransitioningDelegate {
+    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        let controller = AdjustableSizePresentationContrller(presentedViewController: presented, presenting: presenting)
+        controller.frame = frameOverride != nil ? frameOverride! : presenting!.view.frame
+        return controller
+    }
 }
+
+class AdjustableSizePresentationContrller: UIPresentationController {
+    var frame: CGRect = CGRect.zero
+    override var frameOfPresentedViewInContainerView: CGRect {
+        return frame
+    }
+}
+
+//extension ImGuiWindow: ImGuiViewControllerDelegate {
+//    public func imguiViewControllerRequestsDismiss(imguiViewController: ImGuiViewController, completion: (() -> ())? = nil) {
+//        dismissImGui(completion: completion)
+//    }
+//}
+
