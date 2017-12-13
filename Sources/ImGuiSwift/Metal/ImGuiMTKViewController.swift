@@ -5,7 +5,7 @@ public class ImGuiMTKViewController: ViewControllerAlias {
     public let isAvailable = false
     public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.fontPath = fontPathImGuiMTKViewController
+        self.fontPath = fontPath
     }
     #if os(OSX)
     public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
