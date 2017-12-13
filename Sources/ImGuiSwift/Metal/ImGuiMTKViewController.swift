@@ -1,11 +1,11 @@
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 
 public class ImGuiMTKViewController: ViewControllerAlias {
-    var fontName: String?
+    var fontPath: String?
     public let isAvailable = false
-    public convenience init(fontName: String? = nil) {
+    public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.fontName = fontName
+        self.fontPath = fontPathImGuiMTKViewController
     }
     #if os(OSX)
     public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
