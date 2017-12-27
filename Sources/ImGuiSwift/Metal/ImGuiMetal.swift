@@ -24,6 +24,17 @@ public class ImGuiMetal: ImGuiBase {
     
 	var loader: MTKTextureLoader!
     var dict: [ImageAlias: MTLTexture] = [:]
+    public var pixelFormat: MTLPixelFormat = .bgra8Unorm {
+        didSet {
+            (imguiWrapper as! ImGuiWrapperMetal).setPixelFormat(pixelFormat)
+        }
+    }
+    
+    public var depthPixelFormat: MTLPixelFormat = .depth32Float {
+        didSet {
+            (imguiWrapper as! ImGuiWrapperMetal).setDepthPixelFormat(depthPixelFormat)
+        }
+    }
     
     public init(view: MTKView, fontPath: String? = nil) {
         super.init()
@@ -36,6 +47,18 @@ public class ImGuiMetal: ImGuiBase {
 		setupLoader(view.device!)
         setup()
 	}
+    
+    public init(device: MTLDevice, fontPath: String? = nil) {
+        super.init()
+        if fontPath != nil {
+            imguiWrapper = ImGuiWrapperMetal(device: device, font: fontPath!)
+        } else {
+            imguiWrapper = ImGuiWrapperMetal(device: device)
+        }
+        setupLoader(device)
+        io = imguiWrapper.getIO() as! ImGuiIOBridge
+        // setup()
+    }
     
     init(view: ViewAlias, device: MTLDevice, fontPath: String? = nil) {
         super.init()
@@ -62,6 +85,16 @@ public class ImGuiMetal: ImGuiBase {
     		presentationBuffer.commit()
 		}
 	}
+    
+    public func newFrame(commandEncoder: MTLRenderCommandEncoder) {
+        if let imguiWrapper = imguiWrapper as? ImGuiWrapperMetal {
+            imguiWrapper.newFrame(with: commandEncoder)
+        }
+        io = imguiWrapper.getIO() as! ImGuiIOBridge
+//        #if os(iOS)
+//            input.draw(imgui: self)
+//        #endif
+    }
     
 	func newFrame(drawable:CAMetalDrawable) {
         if let imguiWrapper = imguiWrapper as? ImGuiWrapperMetal {

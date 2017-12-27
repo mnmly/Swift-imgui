@@ -13,12 +13,14 @@ typedef float (*PlotValuesGetter)(void * _Nullable, int);
 typedef unsigned int ImGuiID;
 typedef void* ImTextureID;
 
-@interface ImGuiWrapperBase : NSObject
 
 #if TARGET_OS_IPHONE
+@interface ImGuiWrapperBase : NSObject<UIGestureRecognizerDelegate>
 - (instancetype _Nonnull)initWithView: (UIView * _Nonnull)view;
 - (void) setupGestures: (UIView * _Nonnull) view;
+
 #else
+@interface ImGuiWrapperBase : NSObject
 - (instancetype _Nonnull)initWithView: (NSView * _Nonnull)view;
 - (void) setupGestures: (NSView * _Nonnull) view;
 #endif

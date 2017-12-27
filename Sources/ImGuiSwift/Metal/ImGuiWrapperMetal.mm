@@ -25,9 +25,12 @@ void ImGui_ImplMtl_SetMtlDevice(id<MTLDevice> device);
 void ImGui_ImplMtl_SetMtlCommandQueue(id<MTLCommandQueue> queue);
 void ImGui_ImplMtl_SetDrawable(id<CAMetalDrawable> drawable);
 void ImGui_ImplMtl_SetPixelFormat(MTLPixelFormat format);
+void ImGui_ImplMtl_SetDepthPixelFormat(MTLPixelFormat format);
 
 static CAMetalLayer *g_MtlLayer;
 static MTLPixelFormat g_MTLPixelFormat = MTLPixelFormatBGRA8Unorm;
+static MTLPixelFormat g_MTLDepthPixelFormat = MTLPixelFormatInvalid;
+
 static id<MTLDevice> g_MtlDevice;
 static id<MTLCommandQueue> g_MtlCommandQueue;
 static id<MTLRenderPipelineState> g_MtlRenderPipelineState;
@@ -35,6 +38,9 @@ static id<MTLTexture> g_MtlFontTexture;
 static id<MTLSamplerState> g_MtlSamplerState;
 static NSMutableArray<id<MTLBuffer>> *g_MtlBufferPool;
 static id<CAMetalDrawable> g_MtlCurrentDrawable;
+static id<MTLCommandBuffer> g_MtlCommandBuffer;
+static id<MTLRenderCommandEncoder> g_MtlRenderCommandEncoder;
+
 
 @implementation ImGuiWrapperMetal
 
@@ -74,9 +80,24 @@ static id<CAMetalDrawable> g_MtlCurrentDrawable;
 	ImGui::NewFrame();
 }
 
+- (void) newFrameWithCommandEncoder:(id<MTLRenderCommandEncoder> _Nonnull)commandEncoder
+{
+    ImGui_ImplMtl_CreateDeviceObjects();
+    g_MtlRenderCommandEncoder = commandEncoder;
+    [self setupMouse];
+    ImGui::NewFrame();
+}
+
+
 - (void)setPixelFormat:(MTLPixelFormat)format
 {
 	ImGui_ImplMtl_SetPixelFormat(format);
+}
+
+
+- (void)setDepthPixelFormat:(MTLPixelFormat)format
+{
+    ImGui_ImplMtl_SetDepthPixelFormat(format);
 }
 
 - (void)reloadFontTexture
@@ -188,7 +209,7 @@ bool ImGui_ImplMtl_CreateDeviceObjects()
 	texture2d<float, access::sample> tex [[texture(0)]],  \n\
 	sampler tex_sampler [[sampler(0)]])                   \n\
 	{                                                                                       \n\
-	return frag_in.color * tex.sample(tex_sampler, frag_in.tex_coords);       \n\
+    return frag_in.color * tex.sample(tex_sampler, frag_in.tex_coords);       \n\
 	//return tex.sample(tex_sampler, frag_in.tex_coords);       \n\
 	}";
 	
@@ -223,6 +244,11 @@ bool ImGui_ImplMtl_CreateDeviceObjects()
 	renderPipelineDescriptor.fragmentFunction = fragmentFunction;
 	renderPipelineDescriptor.vertexDescriptor = vertexDescriptor;
 	renderPipelineDescriptor.colorAttachments[0].pixelFormat = g_MTLPixelFormat;
+
+    if (g_MTLDepthPixelFormat != MTLPixelFormatInvalid) {
+        renderPipelineDescriptor.depthAttachmentPixelFormat = g_MTLDepthPixelFormat;
+    }
+
 	renderPipelineDescriptor.colorAttachments[0].blendingEnabled = YES;
 //	renderPipelineDescriptor.colorAttachments[0].rgbBlendOperation = MTLBlendOperationAdd;
 //	renderPipelineDescriptor.colorAttachments[0].alphaBlendOperation = MTLBlendOperationAdd;
@@ -258,18 +284,30 @@ void ImGui_ImplMtl_RenderDrawLists (ImDrawData *draw_data)
 	
 	draw_data->ScaleClipRects(io.DisplayFramebufferScale);
 	
-	id<MTLCommandBuffer> commandBuffer = [g_MtlCommandQueue commandBuffer];
-	
-	MTLRenderPassDescriptor *renderPassDescriptor = [MTLRenderPassDescriptor renderPassDescriptor];
-	
-	renderPassDescriptor.colorAttachments[0].texture = [(id<CAMetalDrawable>)g_MtlCurrentDrawable texture];
-	renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionLoad;
-	renderPassDescriptor.colorAttachments[0].storeAction = MTLStoreActionStore;
-	renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 1);
-	
-	id<MTLRenderCommandEncoder> commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
-	
-	[commandEncoder setRenderPipelineState:g_MtlRenderPipelineState];
+    id<MTLCommandBuffer> commandBuffer;
+    MTLRenderPassDescriptor *renderPassDescriptor;
+    id<MTLRenderCommandEncoder> commandEncoder;
+    
+    if (g_MtlRenderCommandEncoder != NULL) {
+        commandEncoder = g_MtlRenderCommandEncoder;
+        [commandEncoder setCullMode:MTLCullModeFront];
+    } else {
+        commandBuffer = [g_MtlCommandQueue commandBuffer];
+        renderPassDescriptor = [MTLRenderPassDescriptor renderPassDescriptor];
+        renderPassDescriptor.colorAttachments[0].texture = [(id<CAMetalDrawable>)g_MtlCurrentDrawable texture];
+        renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionLoad;
+        renderPassDescriptor.colorAttachments[0].storeAction = MTLStoreActionStore;
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 1);
+        commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
+    }
+    
+    if (@available(iOS 11_0, *)) {
+        [commandBuffer pushDebugGroup:@"ImGui Group"];
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    [commandEncoder setRenderPipelineState:g_MtlRenderPipelineState];
 	
 	MTLViewport viewport = {
 		.originX = 0, .originY = 0, .width = (double)fb_width, .height = (double)fb_height, .znear = 0, .zfar = 1
@@ -292,8 +330,9 @@ void ImGui_ImplMtl_RenderDrawLists (ImDrawData *draw_data)
 		tx, ty, tz, 1
 	};
 	
-	[commandEncoder setVertexBytes:orthoMatrix length:sizeof(float) * 16 atIndex:1];
-	
+    [commandEncoder setVertexBytes:orthoMatrix length:sizeof(float) * 16 atIndex:1];
+
+
 	// Render command lists
 	for (int n = 0; n < draw_data->CmdListsCount; n++)
 	{
@@ -321,17 +360,17 @@ void ImGui_ImplMtl_RenderDrawLists (ImDrawData *draw_data)
 			}
 			else
 			{
-				MTLScissorRect scissorRect = {
-					.x = (NSUInteger)pcmd->ClipRect.x,
-					.y = (NSUInteger)(pcmd->ClipRect.y),
-					.width = (NSUInteger)(pcmd->ClipRect.z - pcmd->ClipRect.x),
-					.height = (NSUInteger)(pcmd->ClipRect.w - pcmd->ClipRect.y)
-				};
-				
-				if (scissorRect.x + scissorRect.width <= fb_width && scissorRect.y + scissorRect.height <= fb_height)
-				{
-					[commandEncoder setScissorRect:scissorRect];
-				}
+                MTLScissorRect scissorRect = {
+                    .x = (NSUInteger)pcmd->ClipRect.x,
+                    .y = (NSUInteger)(pcmd->ClipRect.y),
+                    .width = (NSUInteger)(pcmd->ClipRect.z - pcmd->ClipRect.x),
+                    .height = (NSUInteger)(pcmd->ClipRect.w - pcmd->ClipRect.y)
+                };
+
+                if (scissorRect.x + scissorRect.width <= fb_width && scissorRect.y + scissorRect.height <= fb_height)
+                {
+                    [commandEncoder setScissorRect:scissorRect];
+                }
 				
 				id<MTLTexture> texId = (__bridge id<MTLTexture>)pcmd->TextureId;
 				[commandEncoder setFragmentTexture:texId atIndex:0];
@@ -347,18 +386,29 @@ void ImGui_ImplMtl_RenderDrawLists (ImDrawData *draw_data)
 			idx_buffer_offset += pcmd->ElemCount;
 		}
 		
-		dispatch_queue_t queue = dispatch_get_main_queue();
-		[commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBuffer) {
-			dispatch_async(queue, ^{
-				ImGui_ImplMtl_EnqueueReusableBuffer(vertexBuffer);
-				ImGui_ImplMtl_EnqueueReusableBuffer(indexBuffer);
-			});
-		}];
+        if (g_MtlRenderCommandEncoder == NULL) {
+            dispatch_queue_t queue = dispatch_get_main_queue();
+            [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBuffer) {
+                dispatch_async(queue, ^{
+                    ImGui_ImplMtl_EnqueueReusableBuffer(vertexBuffer);
+                    ImGui_ImplMtl_EnqueueReusableBuffer(indexBuffer);
+                });
+            }];
+        }
+
 	}
 	
-	[commandEncoder endEncoding];
-	
-	[commandBuffer commit];
+    if (g_MtlRenderCommandEncoder == NULL) {
+        [commandEncoder endEncoding];
+        [commandBuffer commit];
+    }
+    
+    if (@available(iOS 11_0, *)) {
+        [commandBuffer popDebugGroup];
+    } else {
+        // Fallback on earlier versions
+    }
+
 }
 
 
@@ -380,4 +430,9 @@ void ImGui_ImplMtl_SetDrawable(id<CAMetalDrawable> drawable)
 void ImGui_ImplMtl_SetPixelFormat(MTLPixelFormat format) {
 	g_MTLPixelFormat = format;
 }
+
+void ImGui_ImplMtl_SetDepthPixelFormat(MTLPixelFormat format) {
+    g_MTLDepthPixelFormat = format;
+}
+
 #endif

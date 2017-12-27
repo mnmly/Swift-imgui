@@ -259,6 +259,8 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
     UITapGestureRecognizer *tapRecoginzer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidTap:)];
     [self.view addGestureRecognizer:tapRecoginzer];
     
+    panRecognizer.delegate = self;
+    tapRecoginzer.delegate = self;
 }
 
 - (void)viewDidPan: (UIPanGestureRecognizer *)recognizer
@@ -283,6 +285,12 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
     _touchPos = [recognizer locationInView:self.view];
     _mouseTapped = YES;
 }
+
+#pragma - mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
 #else
 
 -(void)setupGestures:(NSView *)view {

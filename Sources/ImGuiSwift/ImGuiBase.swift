@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import SceneKit
 
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 import GLKit
@@ -50,6 +51,9 @@ public class ImGuiBase {
 	
 	public func setupGestures(view: ViewAlias) {
 		imguiWrapper.setupGestures(view);
+        if let v = view as? SCNView {
+            if v.showsStatistics { print("You can't stats along with ImGui.") }
+        }
 	}
     
     public func loadFont(fontName: String) {
