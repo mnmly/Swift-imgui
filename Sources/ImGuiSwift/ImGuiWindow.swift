@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 @objc public final class ImGuiWindow: UIWindow {
 	
@@ -16,6 +17,11 @@ import UIKit
 	}
     
     public var frameOverride: CGRect?
+    public var sceneView: SCNView? {
+        didSet {
+            ImGui.initialize(sceneView: sceneView!, fontPath: fontPath)
+        }
+    }
 	
 	/// The amount of time you need to shake your device to bring up the ImGui UI
 	private static let shakeWindowTimeInterval: Double = 0.4
@@ -35,6 +41,8 @@ import UIKit
 		case .Gesture: return true
 		}
 	}
+    
+    private var fontPath: String?
 	
 	// MARK: Init
 	
@@ -49,6 +57,8 @@ import UIKit
 //		#endif
 		
 		super.init(frame: frame)
+        
+        self.fontPath = fontPath
 		
 		// tintColor = AppTheme.Colors.controlTinted
 		
@@ -65,6 +75,30 @@ import UIKit
             imguiViewController = vc
         }
 	}
+    
+    public init(frame: CGRect, fontPath: String? = nil, gestureType: GestureType = .Shake) {
+        self.gestureType = gestureType
+        
+        //        // Are we running on a Mac? If so, then we're in a simulator!
+        //        #if (arch(i386) || arch(x86_64))
+        //            self.runningInSimulator = true
+        //        #else
+        //            self.runningInSimulator = false
+        //        #endif
+        
+        super.init(frame: frame)
+        
+        self.fontPath = fontPath
+        
+        // tintColor = AppTheme.Colors.controlTinted
+        
+        switch gestureType {
+        case .Gesture(let gestureRecognizer):
+            gestureRecognizer.addTarget(self, action: #selector(self.presentImGui))
+        case .Shake:
+            break
+        }
+    }
 	
 	public required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -99,11 +133,20 @@ import UIKit
 	// MARK: Presenting & Dismissing
 	
 	@objc private func presentImGui() -> Bool {
+        
+        if let _ = sceneView {
+            let prev = ImGui.hidden
+            if prev {
+                ImGui.hidden = false
+                return true
+            }
+            return false
+        }
 		
 		guard let rootViewController = rootViewController else {
 			return true
 		}
-		
+        
 		var visibleViewController = rootViewController
 		
 		while (visibleViewController.presentedViewController != nil) {
@@ -128,7 +171,13 @@ import UIKit
 	}
 	
 	func dismissImGui(completion: (() -> ())? = nil) {
-		imguiViewController.dismiss(animated: true, completion: completion)
+        
+        if let _ = sceneView {
+            ImGui.hidden = true
+            completion?()
+        } else {
+            imguiViewController.dismiss(animated: true, completion: completion)
+        }
 	}
 }
 

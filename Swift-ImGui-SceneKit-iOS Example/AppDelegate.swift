@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import ImGui
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+    var window: UIWindow? = {
+        let w = ImGuiWindow.init(frame: UIScreen.main.bounds, fontPath: Bundle.main.path(forResource: "SFMono-Regular", ofType: "ttf"))
+        return w
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

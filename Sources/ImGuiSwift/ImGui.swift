@@ -6,11 +6,19 @@
 //  Copyright © 2017 Hiroaki Yamane. All rights reserved.
 //
 
+import SceneKit
+
 public class ImGui {
     
     public enum API {
         case metal
         case opengl
+    }
+    
+    public static var hidden = false {
+        didSet {
+            if let vc = vc as? ImGuiSceneViewController { vc.hidden = hidden }
+        }
     }
     
     public static var vc: ViewControllerAlias?
@@ -30,8 +38,14 @@ public class ImGui {
             vc = ImGuiGLKViewController(fontPath: fontPath)
             #endif
         break
-        default:
-            break
+        }
+    }
+    
+    public class func initialize(sceneView: SCNView, fontPath: String? = nil) {
+        vc = ImGuiSceneViewController()
+        if let _vc = vc as? ImGuiSceneViewController {
+            _vc.fontPath = fontPath
+            _vc.sceneView = sceneView
         }
     }
     
@@ -47,3 +61,4 @@ public class ImGui {
         }
     }
 }
+

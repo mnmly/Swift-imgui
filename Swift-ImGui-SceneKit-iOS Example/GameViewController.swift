@@ -74,23 +74,44 @@ class GameViewController: UIViewController {
         
         // configure the view
         scnView.backgroundColor = UIColor.black
-        scnView.delegate = self
         
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
 
         size = view.frame.size
+        
+        if let w = UIApplication.shared.delegate?.window as? ImGuiWindow {
+            w.sceneView = sceneView
+            ImGui.draw({ (imgui) in
+                imgui.setNextWindowSize(CGSize(width: 300, height: 200))
+                imgui.begin("SceneKit Demo")
+                imgui.setWindowFontScale(2.0)
+                
+                if imgui.button("Tap to tint the ship to red") {
+                    DispatchQueue.main.async {
+                        self.handleTap()
+                    }
+                }
+                
+                imgui.end()
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let device = sceneView.device {
-            imguiMetal = ImGuiMetal(device: device, fontPath: Bundle.main.path(forResource: "SFMono-Regular", ofType: "ttf"))
-            imguiMetal.setupGestures(view: sceneView)
-        }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let vc = ImGui.vc as? ImGuiSceneViewController {
+            vc.viewDidLayoutSubviews()
+        }
+        
+    }
+
+
     
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer? = nil) {
@@ -126,6 +147,7 @@ class GameViewController: UIViewController {
         return true
     }
     
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -140,35 +162,3 @@ class GameViewController: UIViewController {
     }
 }
 
-extension GameViewController: SCNSceneRendererDelegate {
-
-    func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        
-        if let commandEncoder = self.sceneView.currentRenderCommandEncoder {
-            
-            let scale = UIScreen.main.scale
-            
-            imguiMetal.pixelFormat = renderer.colorPixelFormat
-            imguiMetal.depthPixelFormat = renderer.depthPixelFormat
-            
-            imguiMetal.setViewport(size: size, scale: scale)
-        
-            imguiMetal.newFrame(commandEncoder: commandEncoder)
-            
-            imguiMetal.setNextWindowSize(CGSize(width: 300, height: 200))
-            imguiMetal.begin("SceneKit Demo")
-            imguiMetal.setWindowFontScale(2.0)
-
-            if imguiMetal.button("Tap to tint the ship to red") {
-                DispatchQueue.main.async {
-                    self.handleTap()
-                }
-            }
-            imguiMetal.end()
-//            objc_sync_enter(self)
-            imguiMetal.render()
-
-//            objc_sync_exit(self)
-            }
-        }
-}

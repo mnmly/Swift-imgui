@@ -17,6 +17,8 @@
 		996520641FF380F9008E9CDC /* ImGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; };
 		996520651FF380F9008E9CDC /* ImGui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		996520671FF3866D008E9CDC /* SFMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 998E21461EC7EE400032272F /* SFMono-Regular.ttf */; };
+		996E56281FF9C82D0036344C /* ImGuiSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E56271FF9C82D0036344C /* ImGuiSceneViewController.swift */; };
+		996E56291FF9C84A0036344C /* ImGuiSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E56271FF9C82D0036344C /* ImGuiSceneViewController.swift */; };
 		997E13C71EC6C00500BB38AF /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997E13C51EC6BFDA00BB38AF /* SpriteKit.framework */; };
 		997E13CB1EC7713A00BB38AF /* ImGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; };
 		997E13CC1EC7713A00BB38AF /* ImGui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -171,6 +173,7 @@
 		996520591FF380D7008E9CDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9965205C1FF380D7008E9CDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9965205E1FF380D7008E9CDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		996E56271FF9C82D0036344C /* ImGuiSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImGuiSceneViewController.swift; sourceTree = "<group>"; };
 		997E13C51EC6BFDA00BB38AF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		997E13CE1EC7831000BB38AF /* ImGui.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImGui.swift; sourceTree = "<group>"; };
 		997E13D21EC7865A00BB38AF /* ImGuiViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImGuiViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 				999ECC791EC6B423009C3E39 /* Metal */,
 				999ECC7E1EC6B423009C3E39 /* OpenGL */,
 				997E13CE1EC7831000BB38AF /* ImGui.swift */,
+				996E56271FF9C82D0036344C /* ImGuiSceneViewController.swift */,
 			);
 			path = ImGuiSwift;
 			sourceTree = "<group>";
@@ -591,7 +595,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Hiroaki Yamane";
 				TargetAttributes = {
 					9965204D1FF380D7008E9CDC = {
@@ -722,6 +726,7 @@
 				997E14091EC789EC00BB38AF /* Aliases.swift in Sources */,
 				997E140A1EC789EC00BB38AF /* ImGuiBase.swift in Sources */,
 				997E140B1EC789EC00BB38AF /* ImGuiEnums.swift in Sources */,
+				996E56291FF9C84A0036344C /* ImGuiSceneViewController.swift in Sources */,
 				997E140C1EC789EC00BB38AF /* ImGuiIOBridge.m in Sources */,
 				997E140D1EC789EC00BB38AF /* ImGuiStyleBridge.m in Sources */,
 				997E140E1EC789EC00BB38AF /* ImGuiUtils.cpp in Sources */,
@@ -748,6 +753,7 @@
 				999ECDB71EC6BC71009C3E39 /* imgui_demo.cpp in Sources */,
 				999ECDB81EC6BC71009C3E39 /* imgui_draw.cpp in Sources */,
 				999ECC831EC6B423009C3E39 /* Aliases.swift in Sources */,
+				996E56281FF9C82D0036344C /* ImGuiSceneViewController.swift in Sources */,
 				999ECC871EC6B423009C3E39 /* ImGuiIOBridge.m in Sources */,
 				999ECC921EC6B423009C3E39 /* ImGuiMetal.swift in Sources */,
 				999ECC671EC6B41C009C3E39 /* uSynergy.c in Sources */,
@@ -1086,6 +1092,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
@@ -1116,6 +1123,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GP3ES2Y53G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
