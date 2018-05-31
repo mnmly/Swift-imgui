@@ -7,6 +7,12 @@
 //
 
 import SceneKit
+#if os(OSX)
+import Cocoa
+#else
+import UIKit
+#endif
+
 
 public class ImGuiSceneViewController: ViewControllerAlias, ImGuiViewControllerProtocol {
     
@@ -14,20 +20,27 @@ public class ImGuiSceneViewController: ViewControllerAlias, ImGuiViewControllerP
     public var drawBlocks: [ImGuiDrawCallback] = []
     public var fontPath: String?
     private var size = CGSize.zero
-    public var imguiMetal: ImGuiMetal!
+    public var imgui: ImGuiBase!
     public var sceneView: SCNView? {
         didSet {
             sceneView!.delegate = self
-            imguiMetal = ImGuiMetal(view: sceneView!, fontPath: fontPath)
-            imguiMetal.setupGestures(view: sceneView!)
-            imguiMetal.setViewport(size: view.frame.size, scale: UIScreen.main.scale)
+            #if targetEnvironment(simulator)
+            #else
+            imgui = ImGuiMetal(view: sceneView!, fontPath: fontPath)
+            #endif
+            imgui.setupGestures(view: sceneView!)
+            #if os(iOS)
+            imgui.setViewport(size: view.frame.size, scale: UIScreen.main.scale)
+            #endif
         }
     }
     
+    #if os(iOS)
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.imguiMetal.setViewport(size: sceneView!.frame.size, scale: UIScreen.main.scale)
+        self.imgui.setViewport(size: sceneView!.frame.size, scale: UIScreen.main.scale)
     }
+    #endif
 }
 
 extension ImGuiSceneViewController: SCNSceneRendererDelegate {
@@ -35,24 +48,28 @@ extension ImGuiSceneViewController: SCNSceneRendererDelegate {
     public func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
         
         if !hidden {
-            
+            #if targetEnvironment(simulator)
+            #else
             if let commandEncoder = self.sceneView?.currentRenderCommandEncoder {
-                
-                imguiMetal.pixelFormat = renderer.colorPixelFormat
-                imguiMetal.depthPixelFormat = renderer.depthPixelFormat
-                
-                imguiMetal.newFrame(commandEncoder: commandEncoder)
+                if let imguiMetal = imgui as? ImGuiMetal {
+                    imguiMetal.pixelFormat = renderer.colorPixelFormat
+                    imguiMetal.depthPixelFormat = renderer.depthPixelFormat
+                    
+                    imguiMetal.newFrame(commandEncoder: commandEncoder)
+                    
+                  
+                }
                 
                 drawBlocks.forEach({ (block) in
-                    block(self.imguiMetal)
+                    block(self.imgui)
                 })
                 
                 //            objc_sync_enter(self)
-                imguiMetal.render()
+                imgui.render()
                 
                 //            objc_sync_exit(self)
             }
+            #endif
         }
     }
 }
-

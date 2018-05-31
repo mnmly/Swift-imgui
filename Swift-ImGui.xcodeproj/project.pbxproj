@@ -611,6 +611,7 @@
 					997E13EC1EC7893400BB38AF = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = GP3ES2Y53G;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					999ECC2C1EC6B0F6009C3E39 = {
@@ -944,7 +945,8 @@
 				PRODUCT_NAME = ImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -970,7 +972,8 @@
 				PRODUCT_NAME = ImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

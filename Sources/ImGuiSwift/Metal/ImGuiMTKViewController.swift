@@ -58,8 +58,8 @@ public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerPro
     }
     
     #if os(OSX)
-    public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)!
+    public override init(nibName nibNameOrNil: NSNib.Name!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     #else
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -111,14 +111,16 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
             rpd.colorAttachments[0].clearColor = view.clearColor
             let commandBuffer = commandQueue.makeCommandBuffer()
+            #if os(OSX)
+            let scale: CGFloat = NSScreen.main?.backingScaleFactor ?? 1.0
             let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: rpd)
             commandEncoder?.endEncoding()
             commandBuffer?.commit()
-            
-            #if os(OSX)
-            let scale: CGFloat = NSScreen.main()?.backingScaleFactor ?? 1.0
             #else
             let scale = UIScreen.main.scale
+            let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: rpd)
+            commandEncoder?.endEncoding()
+            commandBuffer?.commit()
             #endif
             
 			imgui.setViewport(size: view.bounds.size, scale: scale)
@@ -144,6 +146,7 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             let presentationBuffer = commandQueue.makeCommandBuffer()
             presentationBuffer?.present(drawable)
             presentationBuffer?.commit()
+
         }
     }
 }

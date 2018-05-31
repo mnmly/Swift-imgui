@@ -83,8 +83,13 @@ public class ImGuiMetal: ImGuiBase {
 		imguiWrapper.render()
 		if let commandQueue = commandQueue, let currentDrawable = currentDrawable {
     		let presentationBuffer = commandQueue.makeCommandBuffer()
+            #if os(iOS)
             presentationBuffer?.present(currentDrawable)
             presentationBuffer?.commit()
+            #else
+            presentationBuffer?.present(currentDrawable)
+            presentationBuffer?.commit()
+            #endif
 		}
 	}
     
@@ -123,7 +128,7 @@ public class ImGuiMetal: ImGuiBase {
 			(imguiWrapper as! ImGuiWrapperMetal).image(texture, size, uv0, uv1, tintColor.cgColor, borderColor.cgColor)
 		} else {
 			do {
-				let texture = try loader.newTexture(with: _image.tiffRepresentation!, options: nil)
+				let texture = try loader.newTexture(data: _image.tiffRepresentation!, options: nil)
 				dict[_image] = texture
 			} catch let err {
                 print("ImGui::image\(err.localizedDescription)")
