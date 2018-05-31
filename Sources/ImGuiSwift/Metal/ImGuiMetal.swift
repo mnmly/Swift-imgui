@@ -12,8 +12,8 @@ import Cocoa
 import UIKit
 #endif
 
-#if (arch(i386) || arch(x86_64)) && os(iOS)
-    
+#if targetEnvironment(simulator)
+
 #else
 
 import MetalKit

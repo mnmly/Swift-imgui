@@ -10,7 +10,7 @@
 import Foundation
 import SceneKit
 
-#if (arch(i386) || arch(x86_64)) && os(iOS)
+#if targetEnvironment(simulator)
 import GLKit
 #else
 import MetalKit

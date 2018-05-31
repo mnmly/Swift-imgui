@@ -1,4 +1,4 @@
-#if (arch(i386) || arch(x86_64)) && os(iOS)
+#if targetEnvironment(simulator)
 
 public class ImGuiMTKViewController: ViewControllerAlias {
     var fontPath: String?
