@@ -30,7 +30,7 @@ class TextFieldDelegate : NSObject, UITextFieldDelegate
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
 		lastChar = string
-		if range.length == 1 && string.characters.count == 0 {
+		if range.length == 1 && string.count == 0 {
 			isBackSpaced = true
 		}
 		

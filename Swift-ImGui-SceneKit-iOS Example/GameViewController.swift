@@ -84,6 +84,7 @@ class GameViewController: UIViewController {
         if let w = UIApplication.shared.delegate?.window as? ImGuiWindow {
             w.sceneView = sceneView
             ImGui.draw({ (imgui) in
+                
                 imgui.setNextWindowSize(CGSize(width: 300, height: 200))
                 imgui.begin("SceneKit Demo")
                 imgui.setWindowFontScale(2.0)
@@ -93,6 +94,12 @@ class GameViewController: UIViewController {
                         self.handleTap()
                     }
                 }
+                
+                struct Temp {
+                    static var text: String = "Hello"
+                }
+                
+                imgui.inputText("Text", initialText: &Temp.text)
                 
                 imgui.end()
             })

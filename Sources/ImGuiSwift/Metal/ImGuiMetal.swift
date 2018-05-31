@@ -17,6 +17,7 @@ import UIKit
 #else
 
 import MetalKit
+import SceneKit
 //import SpriteKit
 
 
@@ -48,17 +49,18 @@ public class ImGuiMetal: ImGuiBase {
         setup()
 	}
     
-    public init(device: MTLDevice, fontPath: String? = nil) {
+    public init(view: SCNView, fontPath: String? = nil) {
         super.init()
+        self.view = view
         if fontPath != nil {
-            imguiWrapper = ImGuiWrapperMetal(device: device, font: fontPath!)
+            imguiWrapper = ImGuiWrapperMetal(device: view.device!, font: fontPath!)
         } else {
-            imguiWrapper = ImGuiWrapperMetal(device: device)
+            imguiWrapper = ImGuiWrapperMetal(device: view.device!)
         }
-        setupLoader(device)
-        io = imguiWrapper.getIO() as! ImGuiIOBridge
-        // setup()
+        setupLoader(view.device!)
+        setup()
     }
+    
     
     init(view: ViewAlias, device: MTLDevice, fontPath: String? = nil) {
         super.init()
@@ -81,8 +83,8 @@ public class ImGuiMetal: ImGuiBase {
 		imguiWrapper.render()
 		if let commandQueue = commandQueue, let currentDrawable = currentDrawable {
     		let presentationBuffer = commandQueue.makeCommandBuffer()
-    		presentationBuffer.present(currentDrawable)
-    		presentationBuffer.commit()
+            presentationBuffer?.present(currentDrawable)
+            presentationBuffer?.commit()
 		}
 	}
     
@@ -91,9 +93,11 @@ public class ImGuiMetal: ImGuiBase {
             imguiWrapper.newFrame(with: commandEncoder)
         }
         io = imguiWrapper.getIO() as! ImGuiIOBridge
-//        #if os(iOS)
-//            input.draw(imgui: self)
-//        #endif
+        #if os(iOS)
+            DispatchQueue.main.async {
+                self.input.draw(imgui: self)
+            }
+        #endif
     }
     
 	func newFrame(drawable:CAMetalDrawable) {
@@ -133,7 +137,7 @@ public class ImGuiMetal: ImGuiBase {
 			(imguiWrapper as! ImGuiWrapperMetal).image(texture, size, uv0, uv1, tintColor.cgColor, borderColor.cgColor)
 		} else {
 			do {
-				let texture = try loader.newTexture(with: _image.cgImage!, options: nil)
+				let texture = try loader.newTexture(cgImage: _image.cgImage!, options: nil)
 				dict[_image] = texture
 			} catch let err {
                 print("ImGui::image\(err.localizedDescription)")

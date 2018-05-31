@@ -18,7 +18,7 @@ public class ImGuiSceneViewController: ViewControllerAlias, ImGuiViewControllerP
     public var sceneView: SCNView? {
         didSet {
             sceneView!.delegate = self
-            imguiMetal = ImGuiMetal(device: sceneView!.device!, fontPath: fontPath)
+            imguiMetal = ImGuiMetal(view: sceneView!, fontPath: fontPath)
             imguiMetal.setupGestures(view: sceneView!)
             imguiMetal.setViewport(size: view.frame.size, scale: UIScreen.main.scale)
         }

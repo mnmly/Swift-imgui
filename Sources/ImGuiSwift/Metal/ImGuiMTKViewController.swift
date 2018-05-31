@@ -111,9 +111,9 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
             rpd.colorAttachments[0].clearColor = view.clearColor
             let commandBuffer = commandQueue.makeCommandBuffer()
-            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: rpd)
-			commandEncoder.endEncoding()
-			commandBuffer.commit()
+            let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: rpd)
+            commandEncoder?.endEncoding()
+            commandBuffer?.commit()
             
             #if os(OSX)
             let scale: CGFloat = NSScreen.main()?.backingScaleFactor ?? 1.0
@@ -142,8 +142,8 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
 			imgui.render()
             let presentationBuffer = commandQueue.makeCommandBuffer()
-            presentationBuffer.present(drawable)
-            presentationBuffer.commit()
+            presentationBuffer?.present(drawable)
+            presentationBuffer?.commit()
         }
     }
 }
