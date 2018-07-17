@@ -21,8 +21,11 @@ public class ImGuiSceneViewController: ViewControllerAlias, ImGuiViewControllerP
     public var fontPath: String?
     private var size = CGSize.zero
     public var imgui: ImGuiBase!
+    weak var previousDelegate: SCNSceneRendererDelegate?
+    
     public var sceneView: SCNView? {
         didSet {
+            previousDelegate  = sceneView?.delegate
             sceneView!.delegate = self
             #if targetEnvironment(simulator)
             #else
@@ -45,8 +48,32 @@ public class ImGuiSceneViewController: ViewControllerAlias, ImGuiViewControllerP
 
 extension ImGuiSceneViewController: SCNSceneRendererDelegate {
     
+    public func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        previousDelegate?.renderer?(renderer, updateAtTime: time)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: TimeInterval) {
+        previousDelegate?.renderer?(renderer, didApplyAnimationsAtTime: time)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, didSimulatePhysicsAtTime time: TimeInterval) {
+        previousDelegate?.renderer?(renderer, didSimulatePhysicsAtTime: time)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, didApplyConstraintsAtTime time: TimeInterval) {
+        if #available(iOS 11.0, *) {
+            previousDelegate?.renderer?(renderer, didApplyConstraintsAtTime: time)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        previousDelegate?.renderer?(renderer, willRenderScene: scene, atTime: time)
+    }
+    
     public func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        
+        previousDelegate?.renderer?(renderer, didRenderScene: scene, atTime: time)
         if !hidden {
             #if targetEnvironment(simulator)
             #else
