@@ -1008,19 +1008,19 @@ public class ImGuiBase {
 	}
 	
 	public func pushStyleVar(_ type: ImGuiStyleVar, value: Float) {
-		return imguiWrapper.pushStyleVar(Int32(type.hashValue), with: value)
+		return imguiWrapper.pushStyleVar(type.rawValue, with: value)
 	}
 	
 	public func pushStyleVar(_ type: ImGuiStyleVar, value: CGPoint) {
-		return imguiWrapper.pushStyleVar(Int32(type.hashValue), with: value)
+		return imguiWrapper.pushStyleVar(type.rawValue, with: value)
 	}
 	
 	public func pushStyleVar(_ type: ImGuiStyleVar, value: CGSize) {
-		return imguiWrapper.pushStyleVar(Int32(type.hashValue), with: CGPoint(x: value.width, y: value.height))
+		return imguiWrapper.pushStyleVar(type.rawValue, with: CGPoint(x: value.width, y: value.height))
 	}
 	
 	public func pushStyleColor(_ type: ImGuiColor, color: ColorAlias) {
-		imguiWrapper.pushStyleColor(Int32(type.hashValue), with: color.cgColor)
+		imguiWrapper.pushStyleColor(type.rawValue, with: color.cgColor)
 	}
 	
 	public func popStyleColor(_ count: Int = 1) {

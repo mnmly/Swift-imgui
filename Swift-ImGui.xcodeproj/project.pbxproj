@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		9901A3EE1F739136002ADD8D /* ImGuiWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECC751EC6B423009C3E39 /* ImGuiWindow.swift */; };
+		994920B4211263B700D206BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994920B3211263B700D206BB /* AppDelegate.swift */; };
+		994920B6211263B700D206BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994920B5211263B700D206BB /* ViewController.swift */; };
+		994920B9211263B700D206BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994920B7211263B700D206BB /* Main.storyboard */; };
+		994920BB211263BA00D206BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 994920BA211263BA00D206BB /* Assets.xcassets */; };
+		994920BE211263BA00D206BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994920BC211263BA00D206BB /* LaunchScreen.storyboard */; };
+		994920C52112647700D206BB /* ImGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; };
+		994920C62112647700D206BB /* ImGui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 999ECC2D1EC6B0F6009C3E39 /* ImGui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		996520511FF380D7008E9CDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996520501FF380D7008E9CDC /* AppDelegate.swift */; };
 		996520531FF380D7008E9CDC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 996520521FF380D7008E9CDC /* art.scnassets */; };
 		996520551FF380D7008E9CDC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996520541FF380D7008E9CDC /* GameViewController.swift */; };
@@ -105,6 +112,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		994920C32112646C00D206BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 999ECC241EC6B0F6009C3E39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 999ECC2C1EC6B0F6009C3E39;
+			remoteInfo = "Swift-ImGui-iOS";
+		};
 		996520621FF380E7008E9CDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 999ECC241EC6B0F6009C3E39 /* Project object */;
@@ -129,6 +143,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		994920C72112647700D206BB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				994920C62112647700D206BB /* ImGui.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		996520661FF380F9008E9CDC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +190,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		994920B1211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-ImGui-ImGuiWindow-iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		994920B3211263B700D206BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		994920B5211263B700D206BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		994920B8211263B700D206BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		994920BA211263BA00D206BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		994920BD211263BA00D206BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		994920BF211263BA00D206BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9965204E1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-ImGui-SceneKit-iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		996520501FF380D7008E9CDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		996520521FF380D7008E9CDC /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -234,6 +266,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		994920AE211263B700D206BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				994920C52112647700D206BB /* ImGui.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9965204B1FF380D7008E9CDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +316,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		994920B2211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example */ = {
+			isa = PBXGroup;
+			children = (
+				994920B3211263B700D206BB /* AppDelegate.swift */,
+				994920B5211263B700D206BB /* ViewController.swift */,
+				994920B7211263B700D206BB /* Main.storyboard */,
+				994920BA211263BA00D206BB /* Assets.xcassets */,
+				994920BC211263BA00D206BB /* LaunchScreen.storyboard */,
+				994920BF211263BA00D206BB /* Info.plist */,
+			);
+			path = "Swift-ImGui-ImGuiWindow-iOS Example";
+			sourceTree = "<group>";
+		};
 		9965204F1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +379,7 @@
 				999ECC511EC6B337009C3E39 /* Swift-ImGui-iOS Example */,
 				997E13DA1EC788FF00BB38AF /* Swift-ImGui-macOS Example */,
 				9965204F1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example */,
+				994920B2211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example */,
 				999ECC2E1EC6B0F6009C3E39 /* Products */,
 				997E13C41EC6BFD900BB38AF /* Frameworks */,
 			);
@@ -339,6 +393,7 @@
 				997E13D91EC788FF00BB38AF /* Swift-ImGui-macOS Example.app */,
 				997E13ED1EC7893400BB38AF /* ImGui.framework */,
 				9965204E1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example.app */,
+				994920B1211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -495,6 +550,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		994920B0211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 994920C2211263BA00D206BB /* Build configuration list for PBXNativeTarget "Swift-ImGui-ImGuiWindow-iOS Example" */;
+			buildPhases = (
+				994920AD211263B700D206BB /* Sources */,
+				994920AE211263B700D206BB /* Frameworks */,
+				994920AF211263B700D206BB /* Resources */,
+				994920C72112647700D206BB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				994920C42112646C00D206BB /* PBXTargetDependency */,
+			);
+			name = "Swift-ImGui-ImGuiWindow-iOS Example";
+			productName = "Swift-ImGui-ImGuiWindow-iOS Example";
+			productReference = 994920B1211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9965204D1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 996520611FF380D7008E9CDC /* Build configuration list for PBXNativeTarget "Swift-ImGui-SceneKit-iOS Example" */;
@@ -594,10 +668,15 @@
 		999ECC241EC6B0F6009C3E39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Hiroaki Yamane";
 				TargetAttributes = {
+					994920B0211263B700D206BB = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = GP3ES2Y53G;
+						ProvisioningStyle = Automatic;
+					};
 					9965204D1FF380D7008E9CDC = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = GP3ES2Y53G;
@@ -644,11 +723,22 @@
 				997E13D81EC788FF00BB38AF /* Swift-ImGui-macOS Example */,
 				997E13EC1EC7893400BB38AF /* Swift-ImGui-macOS */,
 				9965204D1FF380D7008E9CDC /* Swift-ImGui-SceneKit-iOS Example */,
+				994920B0211263B700D206BB /* Swift-ImGui-ImGuiWindow-iOS Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		994920AF211263B700D206BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				994920BE211263BA00D206BB /* LaunchScreen.storyboard in Resources */,
+				994920BB211263BA00D206BB /* Assets.xcassets in Resources */,
+				994920B9211263B700D206BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9965204C1FF380D7008E9CDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -698,6 +788,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		994920AD211263B700D206BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				994920B6211263B700D206BB /* ViewController.swift in Sources */,
+				994920B4211263B700D206BB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9965204A1FF380D7008E9CDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,6 +883,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		994920C42112646C00D206BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 999ECC2C1EC6B0F6009C3E39 /* Swift-ImGui-iOS */;
+			targetProxy = 994920C32112646C00D206BB /* PBXContainerItemProxy */;
+		};
 		996520631FF380E7008E9CDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 999ECC2C1EC6B0F6009C3E39 /* Swift-ImGui-iOS */;
@@ -802,6 +906,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		994920B7211263B700D206BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				994920B8211263B700D206BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		994920BC211263BA00D206BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				994920BD211263BA00D206BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		996520561FF380D7008E9CDC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -845,6 +965,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		994920C0211263BA00D206BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Swift-ImGui-ImGuiWindow-iOS Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-ImGuiWindow-iOS-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		994920C1211263BA00D206BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Swift-ImGui-ImGuiWindow-iOS Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mnmly.Swift-ImGui-ImGuiWindow-iOS-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9965205F1FF380D7008E9CDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1186,6 +1353,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		994920C2211263BA00D206BB /* Build configuration list for PBXNativeTarget "Swift-ImGui-ImGuiWindow-iOS Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				994920C0211263BA00D206BB /* Debug */,
+				994920C1211263BA00D206BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		996520611FF380D7008E9CDC /* Build configuration list for PBXNativeTarget "Swift-ImGui-SceneKit-iOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Hiroaki Yamane. All rights reserved.
 //
 
-public enum ImGuiStyleVar
+public enum ImGuiStyleVar: Int32
 {
 	case alpha               // float
 	case windowPadding       // ImVec2
@@ -117,7 +117,7 @@ public struct ImGuiSetCond: OptionSet
 };
 
 
-public enum ImGuiColor
+public enum ImGuiColor: Int32
 {
 	case text
 	case textDisabled

@@ -43,6 +43,7 @@ class ViewController: UIViewController {
             imgui.setNextWindowPos(CGPoint.zero, cond: .always)
             imgui.setNextWindowSize(self.view.frame.size)
             imgui.pushStyleVar(.windowRounding, value: 0.0)
+            imgui.pushStyleColor(ImGuiColor.border, color: UIColor.red)
             
             imgui.begin("Hello ImGui on Swift")
             
@@ -53,9 +54,11 @@ class ViewController: UIViewController {
             self.myView.center = center
             
             if imgui.button("rotate me") {
-                UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.9, animations: {
-                    self.myView.transform = self.myView.transform.rotated(by: 540.0 * .pi / 180.0)
-                }).startAnimation()
+                DispatchQueue.main.async {
+                    UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.9, animations: {
+                        self.myView.transform = self.myView.transform.rotated(by: 540.0 * .pi / 180.0)
+                    }).startAnimation()
+                }
             }
             
             self.points.removeAll()
@@ -69,8 +72,7 @@ class ViewController: UIViewController {
             imgui.sliderFloat2("offset", v: &self.viewOffset, minV: -100.0, maxV: 100.0)
             imgui.sliderFloat2("size", v: &self.myView.bounds.size, minV: 5.0, maxV: 100.0)
             imgui.sliderFloat("cornerRadius", v: &self.myView.layer.cornerRadius, minV: 0.0, maxV: 10.0)
-            
-            
+
             imgui.colorEdit("backgroundColor", color: &self.myView.backgroundColor)
             
             struct Temp {
@@ -86,6 +88,7 @@ class ViewController: UIViewController {
             imgui.plotLines("Sine", values: posY, valuesOffset: 0, overlayText: "", scaleMin: -1.0, scaleMax: 1.0)
             
             imgui.end()
+            imgui.popStyleColor()
             imgui.popStyleVar()
         }
        
