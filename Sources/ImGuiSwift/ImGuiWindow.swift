@@ -12,8 +12,8 @@ import SceneKit
 @objc public final class ImGuiWindow: UIWindow {
 	
 	public enum GestureType {
-		case Shake
-		case Gesture(UIGestureRecognizer)
+		case shake
+		case gesture(UIGestureRecognizer)
 	}
     
     public var frameOverride: CGRect?
@@ -37,8 +37,8 @@ import SceneKit
 	
 	private var shouldPresentImGui: Bool {
 		switch gestureType {
-		case .Shake: return shaking
-		case .Gesture: return true
+		case .shake: return shaking
+		case .gesture: return true
 		}
 	}
     
@@ -46,7 +46,7 @@ import SceneKit
 	
 	// MARK: Init
 	
-    public init(frame: CGRect, api: ImGui.API = .metal, fontPath: String? = nil, gestureType: GestureType = .Shake) {
+    public init(frame: CGRect, api: ImGui.API = .metal, fontPath: String? = nil, gestureType: GestureType = .shake) {
 		self.gestureType = gestureType
 		
 //		// Are we running on a Mac? If so, then we're in a simulator!
@@ -63,9 +63,9 @@ import SceneKit
 		// tintColor = AppTheme.Colors.controlTinted
 		
 		switch gestureType {
-		case .Gesture(let gestureRecognizer):
+		case .gesture(let gestureRecognizer):
 			gestureRecognizer.addTarget(self, action: #selector(self.presentImGui))
-		case .Shake:
+		case .shake:
 			break
 		}
         
@@ -76,7 +76,7 @@ import SceneKit
         }
 	}
     
-    public init(frame: CGRect, fontPath: String? = nil, gestureType: GestureType = .Shake) {
+    public init(frame: CGRect, fontPath: String? = nil, gestureType: GestureType = .shake) {
         self.gestureType = gestureType
         
         //        // Are we running on a Mac? If so, then we're in a simulator!
@@ -93,9 +93,9 @@ import SceneKit
         // tintColor = AppTheme.Colors.controlTinted
         
         switch gestureType {
-        case .Gesture(let gestureRecognizer):
+        case .gesture(let gestureRecognizer):
             gestureRecognizer.addTarget(self, action: #selector(self.presentImGui))
-        case .Shake:
+        case .shake:
             break
         }
     }
@@ -110,13 +110,17 @@ import SceneKit
 		if motion == .motionShake {
 			shaking = true
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + ImGuiWindow.shakeWindowTimeInterval, execute: {
-				if self.shouldPresentImGui {
-					if !self.presentImGui() {
-						self.dismissImGui()
-					}
-				}
-			})
+            #if targetEnvironment(simulator)
+            if self.shouldPresentImGui {
+                if !self.presentImGui() { self.dismissImGui() }
+            }
+            #else
+            DispatchQueue.main.asyncAfter(deadline: .now() + ImGuiWindow.shakeWindowTimeInterval, execute: {
+                if self.shouldPresentImGui {
+                    if !self.presentImGui() { self.dismissImGui() }
+                }
+            })
+            #endif
 		}
 		
 		super.motionBegan(motion, with: event)
@@ -132,7 +136,7 @@ import SceneKit
 	
 	// MARK: Presenting & Dismissing
 	
-	@objc private func presentImGui() -> Bool {
+	@objc public func presentImGui() -> Bool {
         
         if let _ = sceneView {
             let prev = ImGui.hidden
@@ -170,7 +174,7 @@ import SceneKit
 		}
 	}
 	
-	func dismissImGui(completion: (() -> ())? = nil) {
+	@objc public func dismissImGui(completion: (() -> ())? = nil) {
         
         if let _ = sceneView {
             ImGui.hidden = true

@@ -12,16 +12,17 @@ import ImGui
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    #if targetEnvironment(simulator)
-    var window: UIWindow?
-    #else
     var window: UIWindow? = {
-        let w = ImGuiWindow.init(frame: UIScreen.main.bounds, api: ImGui.API.metal, fontPath: Bundle.main.path(forResource: "SFMono-Regular", ofType: "ttf"))
+        #if targetEnvironment(simulator)
+        let api = ImGui.API.opengl
+        #else
+        let api = ImGui.API.metal
+        #endif
+        let w = ImGuiWindow.init(frame: UIScreen.main.bounds, api: api, fontPath: Bundle.main.path(forResource: "SFMono-Regular", ofType: "ttf"))
         let height: CGFloat = 300.0
         w.frameOverride = CGRect(x: 0, y: UIScreen.main.bounds.height - height, width: UIScreen.main.bounds.width, height: height)
         return w
     }()
-    #endif
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
