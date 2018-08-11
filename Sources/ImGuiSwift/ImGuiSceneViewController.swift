@@ -61,7 +61,7 @@ extension ImGuiSceneViewController: SCNSceneRendererDelegate {
     }
     
     public func renderer(_ renderer: SCNSceneRenderer, didApplyConstraintsAtTime time: TimeInterval) {
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, macOS 10.13, *) {
             previousDelegate?.renderer?(renderer, didApplyConstraintsAtTime: time)
         } else {
             // Fallback on earlier versions
