@@ -28,7 +28,7 @@ public class ImGuiOpenGL: ImGuiBase {
     
 	public func newFrame() {
 		(imguiWrapper as! ImGuiWrapperOpenGLES2).newFrame()
-		io = imguiWrapper.getIO() as! ImGuiIOBridge
+        io = imguiWrapper.getIO() as? ImGuiIOBridge
 		#if os(iOS)
 		input.draw(imgui: self)
 		#endif

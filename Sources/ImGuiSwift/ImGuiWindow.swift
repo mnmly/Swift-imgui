@@ -105,7 +105,7 @@ import SceneKit
 	}
 	
 	// MARK: Shaking & Gestures
-	public override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+	public override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
 		
 		if motion == .motionShake {
 			shaking = true
@@ -126,7 +126,7 @@ import SceneKit
 		super.motionBegan(motion, with: event)
 	}
 	
-	public override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+	public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
 		if motion == .motionShake {
 			shaking = false
 		}
