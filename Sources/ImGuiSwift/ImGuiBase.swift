@@ -41,7 +41,7 @@ public class ImGuiBase {
     }
     
 	public func setup() {
-		io = imguiWrapper.getIO() as! ImGuiIOBridge
+        io = imguiWrapper.getIO() as? ImGuiIOBridge
 		
 		#if os(iOS)
 		input = InputTextButton()

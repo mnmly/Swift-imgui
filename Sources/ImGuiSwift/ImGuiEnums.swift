@@ -27,7 +27,7 @@ public struct ImGuiWindowFlags: OptionSet {
 	
 	public let rawValue: Int32
     
-    public init(rawValue: ImGuiWindowFlags.RawValue) {
+    public init(rawValue: Int32) {
         self.rawValue = rawValue
     }
 	
@@ -63,7 +63,7 @@ public struct ImGuiSelectableFlags: OptionSet {
 	
 	public let rawValue: Int32
     
-    public init(rawValue: ImGuiSelectableFlags.RawValue) {
+    public init(rawValue: Int32) {
         self.rawValue = rawValue
     }
 	
@@ -76,7 +76,7 @@ public struct ImGuiInputTextFlags: OptionSet {
 	
 	public let rawValue: Int32
     
-    public init(rawValue: ImGuiInputTextFlags.RawValue) {
+    public init(rawValue: Int32) {
         self.rawValue = rawValue
     }
 	
@@ -106,7 +106,7 @@ public struct ImGuiSetCond: OptionSet
 	
 	public let rawValue: Int32
     
-    public init(rawValue: ImGuiSetCond.RawValue) {
+    public init(rawValue: Int32) {
         self.rawValue = rawValue
     }
 	
