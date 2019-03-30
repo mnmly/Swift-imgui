@@ -204,7 +204,7 @@ have occured. The time base should be a cyclic millisecond time value.
 
 @returns			Time value in milliseconds
 **/
-typedef uint32_t	(*uSynergyGetTimeFunc)();
+typedef uint32_t	(*uSynergyGetTimeFunc)(void);
 
 
 

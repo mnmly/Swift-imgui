@@ -97,7 +97,7 @@ public class ImGuiMetal: ImGuiBase {
         if let imguiWrapper = imguiWrapper as? ImGuiWrapperMetal {
             imguiWrapper.newFrame(with: commandEncoder)
         }
-        io = imguiWrapper.getIO() as! ImGuiIOBridge
+        io = imguiWrapper.getIO() as? ImGuiIOBridge
         #if os(iOS)
             DispatchQueue.main.async {
                 self.input.draw(imgui: self)
@@ -109,7 +109,7 @@ public class ImGuiMetal: ImGuiBase {
         if let imguiWrapper = imguiWrapper as? ImGuiWrapperMetal {
             imguiWrapper.newFrame(drawable)
         }
-		io = imguiWrapper.getIO() as! ImGuiIOBridge
+        io = imguiWrapper.getIO() as? ImGuiIOBridge
 		#if os(iOS)
 		input.draw(imgui: self)
 		#endif

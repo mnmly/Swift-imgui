@@ -669,7 +669,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Hiroaki Yamane";
 				TargetAttributes = {
 					994920B0211263B700D206BB = {
@@ -709,7 +709,7 @@
 			};
 			buildConfigurationList = 999ECC271EC6B0F6009C3E39 /* Build configuration list for PBXProject "Swift-ImGui" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
